@@ -1,0 +1,23 @@
+"app.title" = "飲み代トラッカー";
+"home.placeholder.subtitle" = "ローカルデータを準備しています";
+
+"wealth.level.grandRich" = "大富豪";
+"wealth.level.rich" = "富豪";
+"wealth.level.comfortable" = "小金持ち";
+"wealth.level.normal" = "庶民";
+"wealth.level.broke" = "金欠";
+"wealth.level.extremePoor" = "極貧";
+
+"character.line.grandRich.0" = "今夜はドンペリでも開けるかね";
+"character.line.grandRich.1" = "財布が重くて肩がこるのう";
+"character.line.rich.0" = "余裕の一杯、いただきます";
+"character.line.rich.1" = "今日はグラスも輝いて見えるぞ";
+"character.line.comfortable.0" = "なかなか上手にやりくりしておる";
+"character.line.comfortable.1" = "この調子ならおつまみも豪華じゃ";
+"character.line.normal.0" = "まあ、こんな夜もあるさ";
+"character.line.normal.1" = "平常運転じゃな";
+"character.line.broke.0" = "今月の財布、薄いのう…";
+"character.line.broke.1" = "電球まで節約モードじゃ";
+"character.line.extremePoor.0" = "もやし、うまい…";
+"character.line.extremePoor.1" = "段ボールも案外あたたかいぞ";
+

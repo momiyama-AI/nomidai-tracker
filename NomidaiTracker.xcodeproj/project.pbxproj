@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1B2B3B40000000000000001 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000001 /* AppEnvironment.swift */; };
+		B1B2B3B40000000000000002 /* NomidaiTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000002 /* NomidaiTrackerApp.swift */; };
+		B1B2B3B40000000000000003 /* DrinkMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000003 /* DrinkMetadata.swift */; };
+		B1B2B3B40000000000000004 /* DrinkPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000004 /* DrinkPreset.swift */; };
+		B1B2B3B40000000000000005 /* DrinkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000005 /* DrinkEntry.swift */; };
+		B1B2B3B40000000000000006 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000006 /* UserSettings.swift */; };
+		B1B2B3B40000000000000007 /* PurchaseEntitlement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000007 /* PurchaseEntitlement.swift */; };
+		B1B2B3B40000000000000008 /* AlcoholCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000008 /* AlcoholCalculator.swift */; };
+		B1B2B3B40000000000000009 /* MonthCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000009 /* MonthCalculator.swift */; };
+		B1B2B3B4000000000000000A /* CharacterEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000000A /* CharacterEngine.swift */; };
+		B1B2B3B4000000000000000B /* DrinkPresetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000000B /* DrinkPresetRepository.swift */; };
+		B1B2B3B4000000000000000C /* DrinkEntryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000000C /* DrinkEntryRepository.swift */; };
+		B1B2B3B4000000000000000D /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000000D /* SettingsRepository.swift */; };
+		B1B2B3B4000000000000000E /* SummaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000000E /* SummaryRepository.swift */; };
+		B1B2B3B4000000000000000F /* HomePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000000F /* HomePlaceholderView.swift */; };
+		B1B2B3B40000000000000010 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000010 /* AppGroup.swift */; };
+		B1B2B3B40000000000000011 /* ProductIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000011 /* ProductIDs.swift */; };
+		B1B2B3B40000000000000012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000012 /* Localizable.strings */; };
+		B1B2B3B40000000000000013 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */; };
+		B1B2B3B40000000000000014 /* AlcoholCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000014 /* AlcoholCalculatorTests.swift */; };
+		B1B2B3B40000000000000015 /* CharacterEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000015 /* CharacterEngineTests.swift */; };
+		B1B2B3B40000000000000016 /* MonthCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000016 /* MonthCalculatorTests.swift */; };
+		B1B2B3B40000000000000017 /* RepositoryBootstrapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000017 /* RepositoryBootstrapTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D4000000000000001D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1B2C3D40000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1B2C3D40000000000000004;
+			remoteInfo = NomidaiTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D4000000000000000C /* NomidaiTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NomidaiTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D4000000000000000D /* NomidaiTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NomidaiTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1F2F3F40000000000000001 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000002 /* NomidaiTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomidaiTrackerApp.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000003 /* DrinkMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkMetadata.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000004 /* DrinkPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPreset.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000005 /* DrinkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkEntry.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000006 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000007 /* PurchaseEntitlement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseEntitlement.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000008 /* AlcoholCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculator.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000009 /* MonthCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalculator.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000000A /* CharacterEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEngine.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000000B /* DrinkPresetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPresetRepository.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000000C /* DrinkEntryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkEntryRepository.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000000D /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000000E /* SummaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryRepository.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000000F /* HomePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlaceholderView.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000010 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000011 /* ProductIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDs.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000012 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		F1F2F3F40000000000000014 /* AlcoholCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorTests.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000015 /* CharacterEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEngineTests.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000016 /* MonthCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalculatorTests.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000017 /* RepositoryBootstrapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBootstrapTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D40000000000000007 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D4000000000000000A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B2C3D40000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4000000000000000E /* NomidaiTracker */,
+				A1B2C3D4000000000000000F /* NomidaiTrackerTests */,
+				A1B2C3D40000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4000000000000000C /* NomidaiTracker.app */,
+				A1B2C3D4000000000000000D /* NomidaiTrackerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4000000000000000E /* NomidaiTracker */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40000000000000010 /* App */,
+				A1B2C3D40000000000000011 /* Models */,
+				A1B2C3D40000000000000012 /* Repositories */,
+				A1B2C3D40000000000000013 /* Calculators */,
+				A1B2C3D40000000000000014 /* Views */,
+				A1B2C3D40000000000000016 /* Resources */,
+				A1B2C3D40000000000000017 /* Supporting */,
+			);
+			path = NomidaiTracker;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4000000000000000F /* NomidaiTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F40000000000000014 /* AlcoholCalculatorTests.swift */,
+				F1F2F3F40000000000000015 /* CharacterEngineTests.swift */,
+				F1F2F3F40000000000000016 /* MonthCalculatorTests.swift */,
+				F1F2F3F40000000000000017 /* RepositoryBootstrapTests.swift */,
+			);
+			path = NomidaiTrackerTests;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000010 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F40000000000000002 /* NomidaiTrackerApp.swift */,
+				F1F2F3F40000000000000001 /* AppEnvironment.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000011 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F40000000000000003 /* DrinkMetadata.swift */,
+				F1F2F3F40000000000000004 /* DrinkPreset.swift */,
+				F1F2F3F40000000000000005 /* DrinkEntry.swift */,
+				F1F2F3F40000000000000006 /* UserSettings.swift */,
+				F1F2F3F40000000000000007 /* PurchaseEntitlement.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000012 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F4000000000000000C /* DrinkEntryRepository.swift */,
+				F1F2F3F4000000000000000B /* DrinkPresetRepository.swift */,
+				F1F2F3F4000000000000000D /* SettingsRepository.swift */,
+				F1F2F3F4000000000000000E /* SummaryRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000013 /* Calculators */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F40000000000000008 /* AlcoholCalculator.swift */,
+				F1F2F3F40000000000000009 /* MonthCalculator.swift */,
+				F1F2F3F4000000000000000A /* CharacterEngine.swift */,
+			);
+			path = Calculators;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000014 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D40000000000000015 /* Home */,
+				A1B2C3D40000000000000018 /* QuickRecord */,
+				A1B2C3D40000000000000019 /* Calendar */,
+				A1B2C3D4000000000000001A /* Settings */,
+				A1B2C3D4000000000000001B /* Paywall */,
+				A1B2C3D4000000000000001C /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000015 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F4000000000000000F /* HomePlaceholderView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000016 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F40000000000000012 /* Localizable.strings */,
+				F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000017 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F40000000000000010 /* AppGroup.swift */,
+				F1F2F3F40000000000000011 /* ProductIDs.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000018 /* QuickRecord */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QuickRecord;
+			sourceTree = "<group>";
+		};
+		A1B2C3D40000000000000019 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4000000000000001A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4000000000000001B /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4000000000000001C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D40000000000000004 /* NomidaiTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D40000000000000027 /* Build configuration list for PBXNativeTarget "NomidaiTracker" */;
+			buildPhases = (
+				A1B2C3D40000000000000006 /* Sources */,
+				A1B2C3D40000000000000007 /* Frameworks */,
+				A1B2C3D40000000000000008 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NomidaiTracker;
+			productName = NomidaiTracker;
+			productReference = A1B2C3D4000000000000000C /* NomidaiTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1B2C3D40000000000000005 /* NomidaiTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D40000000000000028 /* Build configuration list for PBXNativeTarget "NomidaiTrackerTests" */;
+			buildPhases = (
+				A1B2C3D40000000000000009 /* Sources */,
+				A1B2C3D4000000000000000A /* Frameworks */,
+				A1B2C3D4000000000000000B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C3D4000000000000001E /* PBXTargetDependency */,
+			);
+			name = NomidaiTrackerTests;
+			productName = NomidaiTrackerTests;
+			productReference = A1B2C3D4000000000000000D /* NomidaiTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3D40000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					A1B2C3D40000000000000004 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					A1B2C3D40000000000000005 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = A1B2C3D40000000000000004;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3D40000000000000026 /* Build configuration list for PBXProject "NomidaiTracker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3D40000000000000002;
+			productRefGroup = A1B2C3D40000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D40000000000000004 /* NomidaiTracker */,
+				A1B2C3D40000000000000005 /* NomidaiTrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D40000000000000008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B2B3B40000000000000012 /* Localizable.strings in Resources */,
+				B1B2B3B40000000000000013 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D4000000000000000B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D40000000000000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B2B3B40000000000000001 /* AppEnvironment.swift in Sources */,
+				B1B2B3B40000000000000002 /* NomidaiTrackerApp.swift in Sources */,
+				B1B2B3B40000000000000003 /* DrinkMetadata.swift in Sources */,
+				B1B2B3B40000000000000004 /* DrinkPreset.swift in Sources */,
+				B1B2B3B40000000000000005 /* DrinkEntry.swift in Sources */,
+				B1B2B3B40000000000000006 /* UserSettings.swift in Sources */,
+				B1B2B3B40000000000000007 /* PurchaseEntitlement.swift in Sources */,
+				B1B2B3B40000000000000008 /* AlcoholCalculator.swift in Sources */,
+				B1B2B3B40000000000000009 /* MonthCalculator.swift in Sources */,
+				B1B2B3B4000000000000000A /* CharacterEngine.swift in Sources */,
+				B1B2B3B4000000000000000B /* DrinkPresetRepository.swift in Sources */,
+				B1B2B3B4000000000000000C /* DrinkEntryRepository.swift in Sources */,
+				B1B2B3B4000000000000000D /* SettingsRepository.swift in Sources */,
+				B1B2B3B4000000000000000E /* SummaryRepository.swift in Sources */,
+				B1B2B3B4000000000000000F /* HomePlaceholderView.swift in Sources */,
+				B1B2B3B40000000000000010 /* AppGroup.swift in Sources */,
+				B1B2B3B40000000000000011 /* ProductIDs.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D40000000000000009 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B2B3B40000000000000014 /* AlcoholCalculatorTests.swift in Sources */,
+				B1B2B3B40000000000000015 /* CharacterEngineTests.swift in Sources */,
+				B1B2B3B40000000000000016 /* MonthCalculatorTests.swift in Sources */,
+				B1B2B3B40000000000000017 /* RepositoryBootstrapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C3D4000000000000001E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1B2C3D40000000000000004 /* NomidaiTracker */;
+			targetProxy = A1B2C3D4000000000000001D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C3D40000000000000020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1B2C3D40000000000000021 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1B2C3D40000000000000022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "飲み代トラッカー";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.momi0216yama.nomidaitracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A1B2C3D40000000000000023 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "飲み代トラッカー";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.momi0216yama.nomidaitracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A1B2C3D40000000000000024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.momi0216yama.nomidaitracker.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NomidaiTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NomidaiTracker";
+			};
+			name = Debug;
+		};
+		A1B2C3D40000000000000025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.momi0216yama.nomidaitracker.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NomidaiTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NomidaiTracker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D40000000000000026 /* Build configuration list for PBXProject "NomidaiTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D40000000000000020 /* Debug */,
+				A1B2C3D40000000000000021 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D40000000000000027 /* Build configuration list for PBXNativeTarget "NomidaiTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D40000000000000022 /* Debug */,
+				A1B2C3D40000000000000023 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D40000000000000028 /* Build configuration list for PBXNativeTarget "NomidaiTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D40000000000000024 /* Debug */,
+				A1B2C3D40000000000000025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B2C3D40000000000000001 /* Project object */;
+}
+
