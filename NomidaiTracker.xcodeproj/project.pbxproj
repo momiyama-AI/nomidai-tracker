@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B1B2B3B40000000000000001 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000001 /* AppEnvironment.swift */; };
 		B1B2B3B40000000000000002 /* NomidaiTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000002 /* NomidaiTrackerApp.swift */; };
+		B1B2B3B40000000000000040 /* ScreenshotMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000040 /* ScreenshotMode.swift */; };
 		B1B2B3B40000000000000003 /* DrinkMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000003 /* DrinkMetadata.swift */; };
 		B1B2B3B40000000000000004 /* DrinkPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000004 /* DrinkPreset.swift */; };
 		B1B2B3B40000000000000005 /* DrinkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000005 /* DrinkEntry.swift */; };
@@ -107,6 +108,7 @@
 		A1B2C3D40000000000000030 /* NomidaiTrackerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NomidaiTrackerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1F2F3F40000000000000001 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000002 /* NomidaiTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NomidaiTrackerApp.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000040 /* ScreenshotMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotMode.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000003 /* DrinkMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkMetadata.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000004 /* DrinkPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkPreset.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000005 /* DrinkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkEntry.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			children = (
 				F1F2F3F40000000000000002 /* NomidaiTrackerApp.swift */,
 				F1F2F3F40000000000000001 /* AppEnvironment.swift */,
+				F1F2F3F40000000000000040 /* ScreenshotMode.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			files = (
 				B1B2B3B40000000000000001 /* AppEnvironment.swift in Sources */,
 				B1B2B3B40000000000000002 /* NomidaiTrackerApp.swift in Sources */,
+				B1B2B3B40000000000000040 /* ScreenshotMode.swift in Sources */,
 				B1B2B3B40000000000000003 /* DrinkMetadata.swift in Sources */,
 				B1B2B3B40000000000000004 /* DrinkPreset.swift in Sources */,
 				B1B2B3B40000000000000005 /* DrinkEntry.swift in Sources */,

@@ -41,6 +41,18 @@
 
 飲み代,家飲み,外飲み,支出,予算,家計簿,お酒,カレンダー,ウィジェット,CSV
 
+## スクリーンショット候補
+
+6.7インチ相当のシミュレータで撮影済み。サイズは 1206 x 2622 px。
+
+- `AppStore/screenshots/home.png`
+- `AppStore/screenshots/quickRecord.png`
+- `AppStore/screenshots/calendar.png`
+- `AppStore/screenshots/settings.png`
+- `AppStore/screenshots/paywall.png`
+
+スクリーンショット用のデモデータはDebugビルド限定の `-screenshotDemoData` 起動引数で投入する。通常起動、Releaseビルド、TestFlight提出ビルドには影響しない。
+
 ## 有料機能 / In-App Purchase
 
 リリース時に買い切りまたはサブスクのどちらを主導線にするか決める。コード上は両方対応済み。

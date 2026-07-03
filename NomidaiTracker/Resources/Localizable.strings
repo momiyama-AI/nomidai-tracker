@@ -134,6 +134,10 @@
 "paywall.terms" = "利用規約";
 "paywall.privacy" = "プライバシーポリシー";
 "paywall.status.unlocked" = "Pro機能が有効です";
+"paywall.screenshot.lifetime.name" = "Pro 買い切り";
+"paywall.screenshot.lifetime.description" = "グラフ・CSV・中ウィジェットをまとめて解放";
+"paywall.screenshot.monthly.name" = "Pro 月額";
+"paywall.screenshot.monthly.description" = "必要な期間だけPro機能を利用";
 "paywall.message.productsUnavailable" = "購入情報を取得できませんでした。App Store Connect の商品設定を確認してください。";
 "paywall.message.unverified" = "購入の検証に失敗しました。";
 "paywall.message.purchaseCompleted" = "購入が完了しました。";

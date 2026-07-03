@@ -38,6 +38,17 @@ struct PaywallView: View {
                     .foregroundStyle(.green)
                 } else if storeKitService.isLoading {
                     ProgressView()
+                } else if usesScreenshotProducts {
+                    screenshotProductButton(
+                        nameKey: "paywall.screenshot.lifetime.name",
+                        descriptionKey: "paywall.screenshot.lifetime.description",
+                        price: "¥600"
+                    )
+                    screenshotProductButton(
+                        nameKey: "paywall.screenshot.monthly.name",
+                        descriptionKey: "paywall.screenshot.monthly.description",
+                        price: "¥200/月"
+                    )
                 } else if storeKitService.products.isEmpty {
                     Text("paywall.message.productsUnavailable")
                         .foregroundStyle(.secondary)
@@ -81,7 +92,7 @@ struct PaywallView: View {
                 }
             }
 
-            if let messageKey = storeKitService.messageKey {
+            if let messageKey = storeKitService.messageKey, !usesScreenshotProducts {
                 Section {
                     Text(LocalizedStringKey(messageKey))
                         .foregroundStyle(.secondary)
@@ -94,6 +105,31 @@ struct PaywallView: View {
             await refreshEntitlements()
         }
         .onAppear(perform: reloadAccess)
+    }
+
+    private var usesScreenshotProducts: Bool {
+        #if DEBUG
+        ScreenshotMode.isEnabled
+        #else
+        false
+        #endif
+    }
+
+    private func screenshotProductButton(nameKey: LocalizedStringKey, descriptionKey: LocalizedStringKey, price: String) -> some View {
+        Button {} label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(nameKey)
+                        .font(.body.weight(.semibold))
+                    Text(descriptionKey)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text(price)
+                    .font(.body.monospacedDigit())
+            }
+        }
     }
 
     private func purchase(_ product: Product) async {
