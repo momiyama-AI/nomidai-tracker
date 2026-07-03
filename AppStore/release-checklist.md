@@ -15,6 +15,7 @@
 
 ## App Store Connect
 
+- [ ] `AppStore/app-store-connect-fields.md` を開く。
 - [ ] 新規アプリを作成する。
 - [ ] Bundle ID `com.momi0216yama.nomidaitracker` を選択する。
 - [ ] カテゴリをファイナンスに設定する。

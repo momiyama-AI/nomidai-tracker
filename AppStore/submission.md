@@ -118,6 +118,7 @@ GitHub Pagesで公開する場合:
 本アプリは酒類に関する支出記録アプリです。医療、健康改善、節酒、禁酒、依存症治療を目的とするアプリではありません。記録データは端末内に保存され、開発者サーバーへの送信、外部API連携、アカウント登録はありません。アプリ内課金はStoreKit 2を利用し、購入復元ボタン、利用規約、プライバシーポリシーへのリンクを設置しています。
 
 App Review Notes欄へ貼る詳細メモと確認手順は `AppStore/review-notes.md` を参照。
+App Store Connectの入力欄ごとに整理した作業シートは `AppStore/app-store-connect-fields.md` を参照。
 
 ## App Store Connectで必要な作業
 

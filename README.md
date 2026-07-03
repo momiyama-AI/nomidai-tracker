@@ -40,6 +40,7 @@ GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull reque
 ## App Store提出資料
 
 - `AppStore/submission.md`: App Store Connect入力メモ
+- `AppStore/app-store-connect-fields.md`: App Store Connect入力シート
 - `AppStore/privacy-answers.md`: プライバシー回答案
 - `AppStore/export-compliance.md`: 輸出コンプライアンス回答案
 - `AppStore/age-rating.md`: 年齢制限回答案

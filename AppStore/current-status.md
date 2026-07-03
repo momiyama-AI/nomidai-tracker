@@ -20,6 +20,7 @@
 - Required Reason APIのUserDefaults理由コード `CA92.1`
 - 輸出コンプライアンス用 `ITSAppUsesNonExemptEncryption = false` 設定
 - App Store Connect入力メモ
+- App Store Connect入力シート
 - App Review Notes入力メモ
 - GitHub Pages公開手順
 - Apple Developer署名設定手順
@@ -73,6 +74,7 @@ xcodebuild test \
 - プライバシー回答
 - 年齢制限17+設定
 - IAP商品作成
+- 入力シート: `AppStore/app-store-connect-fields.md`
 
 ## 次の推奨順序
 
