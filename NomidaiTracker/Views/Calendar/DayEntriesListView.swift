@@ -3,6 +3,7 @@ import SwiftUI
 
 struct DayEntriesListView: View {
     let date: Date
+    var onChanged: () -> Void = {}
 
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -28,6 +29,13 @@ struct DayEntriesListView: View {
 
                         Text(CurrencyFormatter.yenString(entry.amountYen))
                             .font(.callout.monospacedDigit())
+                    }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            delete(entry)
+                        } label: {
+                            Label("common.delete", systemImage: "trash")
+                        }
                     }
                 }
             }
@@ -55,6 +63,17 @@ struct DayEntriesListView: View {
 
     private func reload() {
         entries = (try? DrinkEntryRepository(context: modelContext).fetchEntries(on: date)) ?? []
+    }
+
+    private func delete(_ entry: DrinkEntry) {
+        do {
+            try DrinkEntryRepository(context: modelContext).delete(entry)
+            try WidgetSnapshotRefresher(context: modelContext).refresh()
+            reload()
+            onChanged()
+        } catch {
+            assertionFailure("記録の削除に失敗しました: \(error)")
+        }
     }
 }
 

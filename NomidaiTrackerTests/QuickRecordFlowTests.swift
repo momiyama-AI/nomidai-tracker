@@ -75,6 +75,26 @@ final class QuickRecordFlowTests: XCTestCase {
         XCTAssertEqual(wineGlass.usageCount, 2)
         XCTAssertNotNil(wineGlass.lastUsedAt)
     }
+
+    func testDeleteEntryRemovesFromDaySummaryAndWidgetSnapshot() throws {
+        let container = try makeContainer()
+        let context = container.mainContext
+        let presetRepository = DrinkPresetRepository(context: context)
+        try presetRepository.seedDefaultPresetsIfNeeded()
+        let preset = try presetRepository.fetchActivePresets().first { $0.name == "缶ビール350" }!
+        let now = Date()
+
+        let entryRepository = DrinkEntryRepository(context: context)
+        let entry = try entryRepository.createEntry(from: preset, amountYen: 220, occurredAt: now)
+        XCTAssertEqual(try entryRepository.fetchEntries(on: now).count, 1)
+        XCTAssertEqual(try WidgetSnapshotBuilder(context: context).build(now: now).totalAmountYen, 220)
+
+        try entryRepository.delete(entry)
+
+        XCTAssertTrue(try entryRepository.fetchEntries(on: now).isEmpty)
+        XCTAssertEqual(try SummaryRepository(context: context).monthlySummary(containing: now).totalAmountYen, 0)
+        XCTAssertEqual(try WidgetSnapshotBuilder(context: context).build(now: now).totalAmountYen, 0)
+    }
 }
 
 final class QuickRecordInputValidatorTests: XCTestCase {

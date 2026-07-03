@@ -32,9 +32,9 @@ struct CalendarMonthView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: reload)
         .onChange(of: displayedMonth) { _, _ in reload() }
-        .sheet(item: $selectedDay) { selection in
+        .sheet(item: $selectedDay, onDismiss: reload) { selection in
             NavigationStack {
-                DayEntriesListView(date: selection.date)
+                DayEntriesListView(date: selection.date, onChanged: reload)
             }
         }
     }
