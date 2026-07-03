@@ -25,6 +25,7 @@
 		B1B2B3B40000000000000011 /* ProductIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000011 /* ProductIDs.swift */; };
 		B1B2B3B40000000000000012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000012 /* Localizable.strings */; };
 		B1B2B3B40000000000000013 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */; };
+		B1B2B3B4000000000000003F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000003E /* Assets.xcassets */; };
 		B1B2B3B40000000000000014 /* AlcoholCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000014 /* AlcoholCalculatorTests.swift */; };
 		B1B2B3B40000000000000015 /* CharacterEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000015 /* CharacterEngineTests.swift */; };
 		B1B2B3B40000000000000016 /* MonthCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000016 /* MonthCalculatorTests.swift */; };
@@ -122,6 +123,7 @@
 		F1F2F3F40000000000000011 /* ProductIDs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductIDs.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000012 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		F1F2F3F4000000000000003E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1F2F3F40000000000000014 /* AlcoholCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholCalculatorTests.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000015 /* CharacterEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEngineTests.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000016 /* MonthCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalculatorTests.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			children = (
 				F1F2F3F40000000000000012 /* Localizable.strings */,
 				F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */,
+				F1F2F3F4000000000000003E /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			files = (
 				B1B2B3B40000000000000012 /* Localizable.strings in Resources */,
 				B1B2B3B40000000000000013 /* PrivacyInfo.xcprivacy in Resources */,
+				B1B2B3B4000000000000003F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +753,7 @@
 		A1B2C3D40000000000000022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NomidaiTracker/NomidaiTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -781,6 +786,7 @@
 		A1B2C3D40000000000000023 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NomidaiTracker/NomidaiTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
