@@ -130,6 +130,8 @@
 
 "paywall.title" = "Pro機能";
 "paywall.products.header" = "購入";
+"paywall.subscription.header" = "月額プランについて";
+"paywall.subscription.disclosure" = "Pro 月額は1か月ごとの自動更新サブスクリプションです。価格は上記のApp Store表示価格です。購入はApple IDに請求され、解約するまで自動更新されます。更新日の24時間前までにApp Storeのアカウント設定から解約できます。";
 "paywall.restore" = "購入を復元";
 "paywall.terms" = "利用規約";
 "paywall.privacy" = "プライバシーポリシー";

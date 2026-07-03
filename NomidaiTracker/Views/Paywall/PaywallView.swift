@@ -76,6 +76,16 @@ struct PaywallView: View {
                 Text("paywall.products.header")
             }
 
+            if !isUnlocked {
+                Section {
+                    Text("paywall.subscription.disclosure")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                } header: {
+                    Text("paywall.subscription.header")
+                }
+            }
+
             Section {
                 Button {
                     Task { await restorePurchases() }
