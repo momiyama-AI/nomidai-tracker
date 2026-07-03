@@ -13,6 +13,7 @@ set +e
 xcodebuild archive \
   -project "$PROJECT" \
   -scheme "$SCHEME" \
+  -configuration Release \
   -destination "generic/platform=iOS" \
   -archivePath "$ARCHIVE_PATH" \
   -allowProvisioningUpdates 2>&1 | tee "$LOG_PATH"
