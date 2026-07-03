@@ -32,7 +32,7 @@
 ## GitHub Pages / 法務ページ
 
 - [ ] GitHubリポジトリ `momiyama-AI/nomidai-tracker` を作成する。
-- [ ] ローカルリポジトリにremoteを追加してpushする。
+- [ ] `bash scripts/push-github.sh` でremote追加とpushを行う。
 - [ ] GitHub Actionsの `iOS CI` が成功する。
 - [ ] リポジトリ名またはPages URLをアプリ内URLと合わせる。
 - [ ] Pages公開元を `docs` に設定する。

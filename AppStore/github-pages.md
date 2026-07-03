@@ -20,8 +20,7 @@
 2. ローカルリポジトリにremoteを追加する。
 
 ```sh
-git remote add origin https://github.com/momiyama-AI/nomidai-tracker.git
-git push -u origin master
+bash scripts/push-github.sh
 ```
 
 3. GitHubのリポジトリ画面で `Settings > Pages` を開く。

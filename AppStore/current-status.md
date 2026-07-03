@@ -48,7 +48,7 @@ xcodebuild test \
 
 - `momiyama-AI/nomidai-tracker` リポジトリは確認時点で未作成または未アクセス。
 - GitHub連携検索でも `momiyama-AI` 配下に `nomidai` 関連リポジトリは見つからなかった。
-- リポジトリ作成後、ローカルのremoteを追加してpushする。
+- リポジトリ作成後、`bash scripts/push-github.sh` でローカルのremoteを追加してpushする。
 - GitHub Pagesの公開元を `docs` に設定する。
 - `bash scripts/verify-pages.sh` で法務ページURLが開けることを確認する。
 
@@ -75,7 +75,7 @@ xcodebuild test \
 ## 次の推奨順序
 
 1. GitHubで `momiyama-AI/nomidai-tracker` を作成する。
-2. このリポジトリをpushする。
+2. `bash scripts/push-github.sh` でこのリポジトリをpushする。
 3. GitHub Pagesで `docs` を公開する。
 4. Apple DeveloperでApp ID、Widget App ID、App Groupを作成する。
 5. `bash scripts/archive-testflight.sh` でArchiveを作成する。

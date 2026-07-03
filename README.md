@@ -34,6 +34,7 @@ Archive / TestFlightアップロードにはApple Developerの署名設定が必
 提出前のローカル成果物確認は `bash scripts/verify-release-readiness.sh` で実行できます。
 
 GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull requestで自動テストが走ります。
+`momiyama-AI/nomidai-tracker` 作成後の初回pushは `bash scripts/push-github.sh` で実行できます。
 
 ## App Store提出資料
 

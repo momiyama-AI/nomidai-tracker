@@ -150,6 +150,7 @@ require_png_size "NomidaiTracker/Resources/Assets.xcassets/AppIcon.appiconset/Ap
 
 bash -n scripts/archive-testflight.sh && ok "archive-testflight.sh syntax is valid" || fail "archive-testflight.sh syntax is invalid"
 bash -n scripts/verify-pages.sh && ok "verify-pages.sh syntax is valid" || fail "verify-pages.sh syntax is invalid"
+bash -n scripts/push-github.sh && ok "push-github.sh syntax is valid" || fail "push-github.sh syntax is invalid"
 
 if [ "$failures" -eq 0 ]; then
   printf 'Release readiness local checks passed.\n'
