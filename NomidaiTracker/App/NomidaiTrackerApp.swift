@@ -7,9 +7,9 @@ struct NomidaiTrackerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomePlaceholderView()
+            HomeView()
                 .task {
-                    await AppEnvironment.bootstrapIfNeeded(in: modelContainer)
+                    AppEnvironment.bootstrapIfNeeded(in: modelContainer)
                 }
         }
         .modelContainer(modelContainer)

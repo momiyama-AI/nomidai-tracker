@@ -1,6 +1,29 @@
 "app.title" = "飲み代トラッカー";
 "home.placeholder.subtitle" = "ローカルデータを準備しています";
 "home.button.record" = "記録する";
+"home.section.total" = "今月の飲み代";
+"home.comparison.label" = "先月同日比";
+"home.comparison.increase" = "%@ 増";
+"home.comparison.decrease" = "%@ 減";
+"home.comparison.same" = "先月と同じ";
+"home.breakdown.home" = "家飲み";
+"home.breakdown.outside" = "外飲み";
+"home.pureAlcohol.label" = "純アルコール量(参考)";
+"home.dryDays.label" = "休肝日";
+"home.dryDays.value" = "%d日";
+"home.calendar.button" = "カレンダーを見る";
+
+"calendar.title" = "カレンダー";
+"calendar.weekday.0" = "日";
+"calendar.weekday.1" = "月";
+"calendar.weekday.2" = "火";
+"calendar.weekday.3" = "水";
+"calendar.weekday.4" = "木";
+"calendar.weekday.5" = "金";
+"calendar.weekday.6" = "土";
+"calendar.day.detail.empty" = "記録はありません";
+
+"common.close" = "閉じる";
 
 "quickrecord.title" = "クイック記録";
 "quickrecord.section.presets" = "プリセットを選択";

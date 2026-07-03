@@ -80,6 +80,12 @@ struct DrinkEntryRepository {
         return try context.fetch(descriptor)
     }
 
+    func fetchEntries(on date: Date, calendar: Calendar = .current) throws -> [DrinkEntry] {
+        let start = calendar.startOfDay(for: date)
+        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start
+        return try fetchEntries(from: start, to: end)
+    }
+
     func fetchAllEntries() throws -> [DrinkEntry] {
         let descriptor = FetchDescriptor<DrinkEntry>(
             sortBy: [
