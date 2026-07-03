@@ -68,7 +68,7 @@ final class CharacterEngineTests: XCTestCase {
         )
 
         XCTAssertEqual(evaluation.baseRatio, 1.0, accuracy: 0.000_001)
-        XCTAssertEqual(evaluation.budgetPaceRatio, 0.5, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.budgetPaceRatio ?? -1, 0.5, accuracy: 0.000_001)
         XCTAssertEqual(evaluation.adjustedRatio, 0.5, accuracy: 0.000_001)
         XCTAssertEqual(evaluation.level, .rich)
     }
