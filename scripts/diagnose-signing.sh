@@ -9,6 +9,7 @@ PROJECT_FILE="${PROJECT_FILE:-NomidaiTracker.xcodeproj/project.pbxproj}"
 APP_ENTITLEMENTS="${APP_ENTITLEMENTS:-NomidaiTracker/NomidaiTracker.entitlements}"
 WIDGET_ENTITLEMENTS="${WIDGET_ENTITLEMENTS:-NomidaiTrackerWidget/NomidaiTrackerWidget.entitlements}"
 PROFILE_DIR="${PROFILE_DIR:-$HOME/Library/MobileDevice/Provisioning Profiles}"
+XCODE_PROFILE_DIR="${XCODE_PROFILE_DIR:-$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles}"
 
 failures=0
 
@@ -86,26 +87,36 @@ find_profile_for_bundle() {
   local bundle_id="$1"
   local label="$2"
   local found=0
+  local any_dir=0
 
-  if [ ! -d "$PROFILE_DIR" ]; then
-    fail "Provisioning profile directory is missing: $PROFILE_DIR"
-    return
-  fi
+  local dir
+  for dir in "$PROFILE_DIR" "$XCODE_PROFILE_DIR"; do
+    if [ ! -d "$dir" ]; then
+      continue
+    fi
 
-  shopt -s nullglob
-  local profile
-  for profile in "$PROFILE_DIR"/*.mobileprovision; do
-    local match
-    match="$(profile_matches "$profile" "$bundle_id" "1" || true)"
-    if [ -n "$match" ]; then
-      ok "$label provisioning profile found: ${match#PROFILE_MATCH:}"
-      found=1
+    any_dir=1
+    shopt -s nullglob
+    local profile
+    for profile in "$dir"/*.mobileprovision; do
+      local match
+      match="$(profile_matches "$profile" "$bundle_id" "1" || true)"
+      if [ -n "$match" ]; then
+        ok "$label provisioning profile found: ${match#PROFILE_MATCH:}"
+        found=1
+        break
+      fi
+    done
+    shopt -u nullglob
+
+    if [ "$found" -eq 1 ]; then
       break
     fi
   done
-  shopt -u nullglob
 
-  if [ "$found" -eq 0 ]; then
+  if [ "$any_dir" -eq 0 ]; then
+    fail "Provisioning profile directories are missing: $PROFILE_DIR and $XCODE_PROFILE_DIR"
+  elif [ "$found" -eq 0 ]; then
     fail "$label provisioning profile not found for $bundle_id with App Group $APP_GROUP_ID"
   fi
 }
@@ -123,12 +134,8 @@ require_text "$PROJECT_FILE" "PROVISIONING_PROFILE_SPECIFIER = \"NomidaiTrackerW
 require_text "$APP_ENTITLEMENTS" "$APP_GROUP_ID" "App entitlement has App Group"
 require_text "$WIDGET_ENTITLEMENTS" "$APP_GROUP_ID" "Widget entitlement has App Group"
 
-if [ ! -d "$PROFILE_DIR" ]; then
-  fail "Provisioning profile directory is missing: $PROFILE_DIR"
-else
-  find_profile_for_bundle "$APP_BUNDLE_ID" "App"
-  find_profile_for_bundle "$WIDGET_BUNDLE_ID" "Widget"
-fi
+find_profile_for_bundle "$APP_BUNDLE_ID" "App"
+find_profile_for_bundle "$WIDGET_BUNDLE_ID" "Widget"
 
 if [ "$failures" -eq 0 ]; then
   printf 'Signing diagnostics passed.\n'
