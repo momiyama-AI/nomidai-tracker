@@ -85,3 +85,9 @@
 "character.line.extremePoor.0" = "もやし、うまい…";
 "character.line.extremePoor.1" = "段ボールも案外あたたかいぞ";
 
+"widget.month.label" = "今月";
+"widget.budget.remaining" = "予算残額";
+"widget.drydays" = "休肝日";
+"widget.pro.locked" = "中サイズはPro機能";
+"widget.configuration.name" = "飲み代トラッカー";
+"widget.configuration.description" = "今月の飲み代を表示します。";
