@@ -26,6 +26,7 @@
 		B1B2B3B40000000000000011 /* ProductIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000011 /* ProductIDs.swift */; };
 		B1B2B3B40000000000000012 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000012 /* Localizable.strings */; };
 		B1B2B3B40000000000000013 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */; };
+		B1B2B3B40000000000000041 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000013 /* PrivacyInfo.xcprivacy */; };
 		B1B2B3B4000000000000003F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000003E /* Assets.xcassets */; };
 		B1B2B3B40000000000000014 /* AlcoholCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000014 /* AlcoholCalculatorTests.swift */; };
 		B1B2B3B40000000000000015 /* CharacterEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000015 /* CharacterEngineTests.swift */; };
@@ -541,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1B2B3B40000000000000035 /* Localizable.strings in Resources */,
+				B1B2B3B40000000000000041 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
