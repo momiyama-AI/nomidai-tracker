@@ -31,6 +31,8 @@ bash scripts/archive-testflight.sh
 
 ## 解消手順
 
+詳細な画面操作は `AppStore/apple-developer-setup.md` を参照。
+
 1. クラウドMacのXcodeを開く。
 2. `Xcode > Settings > Accounts` を開く。
 3. Apple ID `m0mi0216yama@gmail.com` を再ログインする。

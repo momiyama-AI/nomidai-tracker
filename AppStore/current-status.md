@@ -22,6 +22,7 @@
 - App Store Connect入力メモ
 - App Review Notes入力メモ
 - GitHub Pages公開手順
+- Apple Developer署名設定手順
 - GitHub Actions CI設定
 - ペイウォール提出画像の月額サブスク説明反映
 - ローカル提出準備チェック `scripts/verify-release-readiness.sh`
@@ -61,6 +62,7 @@ xcodebuild test \
 - App Group `group.com.momi0216yama.nomidaitracker` の作成と紐づけが必要。
 - Provisioning Profileの生成が必要。
 - 再確認コマンド: `bash scripts/archive-testflight.sh`
+- 詳細手順: `AppStore/apple-developer-setup.md`
 
 ### App Store Connect
 
@@ -77,7 +79,7 @@ xcodebuild test \
 1. GitHubで `momiyama-AI/nomidai-tracker` を作成する。
 2. `bash scripts/push-github.sh` でこのリポジトリをpushする。
 3. GitHub Pagesで `docs` を公開する。
-4. Apple DeveloperでApp ID、Widget App ID、App Groupを作成する。
+4. `AppStore/apple-developer-setup.md` に沿ってApple DeveloperでApp ID、Widget App ID、App Groupを作成する。
 5. `bash scripts/archive-testflight.sh` でArchiveを作成する。
 6. App Store ConnectでアプリとIAP商品を作成する。
 7. TestFlightへアップロードする。

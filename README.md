@@ -30,6 +30,7 @@ xcodebuild test \
 ```
 
 Archive / TestFlightアップロードにはApple Developerの署名設定が必要です。現在の手順と未解決事項は `AppStore/provisioning.md` を参照してください。
+Apple Developerで作成するApp ID/App Groupの詳細は `AppStore/apple-developer-setup.md` を参照してください。
 署名設定後のArchive確認は `bash scripts/archive-testflight.sh` で実行できます。
 提出前のローカル成果物確認は `bash scripts/verify-release-readiness.sh` で実行できます。
 

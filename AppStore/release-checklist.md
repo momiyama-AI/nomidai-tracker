@@ -4,6 +4,7 @@
 
 ## Apple Developer
 
+- [ ] `AppStore/apple-developer-setup.md` の手順を開く。
 - [ ] Xcode > Settings > Accounts でApple IDに再ログインする。
 - [ ] Team `K4RPQR296Y` が表示されることを確認する。
 - [ ] App ID `com.momi0216yama.nomidaitracker` を作成する。
