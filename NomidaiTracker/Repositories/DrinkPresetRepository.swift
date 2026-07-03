@@ -1,6 +1,10 @@
 import Foundation
 import SwiftData
 
+enum DrinkPresetRepositoryError: Error, Equatable {
+    case customPresetLimitReached
+}
+
 struct DrinkPresetRepository {
     struct DefaultDrinkPreset {
         let id: UUID
@@ -38,6 +42,8 @@ struct DrinkPresetRepository {
     init(context: ModelContext) {
         self.context = context
     }
+
+    static let freeCustomPresetLimit = 3
 
     static let defaultPresets: [DefaultDrinkPreset] = [
         DefaultDrinkPreset(
@@ -168,6 +174,61 @@ struct DrinkPresetRepository {
         return presets
     }
 
+    func countActiveCustomPresets() throws -> Int {
+        let descriptor = FetchDescriptor<DrinkPreset>(
+            predicate: #Predicate<DrinkPreset> { preset in
+                preset.isDefault == false && preset.isArchived == false
+            }
+        )
+        return try context.fetch(descriptor).count
+    }
+
+    func canCreateCustomPreset(isProUnlocked: Bool) throws -> Bool {
+        if isProUnlocked {
+            return true
+        }
+        return try countActiveCustomPresets() < Self.freeCustomPresetLimit
+    }
+
+    func createCustomPreset(
+        name: String,
+        category: DrinkCategory,
+        location: DrinkLocation,
+        defaultPriceYen: Int,
+        volumeML: Int,
+        abvTenthsPercent: Int,
+        isProUnlocked: Bool,
+        now: Date = .now
+    ) throws -> DrinkPreset {
+        guard try canCreateCustomPreset(isProUnlocked: isProUnlocked) else {
+            throw DrinkPresetRepositoryError.customPresetLimitReached
+        }
+
+        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let safeLocation = location
+        let safeCategory = safeLocation == .outside
+            ? DrinkCategory.outside
+            : (category == .outside ? .custom : category)
+        let nextSortIndex = ((try fetchActivePresets().map(\.sortIndex).max()) ?? (Self.defaultPresets.count - 1)) + 1
+        let preset = DrinkPreset(
+            name: trimmedName.isEmpty ? "カスタム" : trimmedName,
+            category: safeCategory,
+            location: safeLocation,
+            defaultPriceYen: defaultPriceYen,
+            volumeML: safeLocation == .outside ? 0 : volumeML,
+            abvTenthsPercent: safeLocation == .outside ? 0 : abvTenthsPercent,
+            iconName: Self.iconName(for: safeCategory),
+            colorName: safeCategory.rawValue,
+            isDefault: false,
+            sortIndex: nextSortIndex,
+            createdAt: now,
+            updatedAt: now
+        )
+        context.insert(preset)
+        try context.save()
+        return preset
+    }
+
     func incrementUsage(for preset: DrinkPreset, usedAt: Date = .now) throws {
         preset.usageCount += 1
         preset.lastUsedAt = usedAt
@@ -187,6 +248,32 @@ struct DrinkPresetRepository {
         preset.abvTenthsPercent = max(0, abvTenthsPercent)
         preset.updatedAt = updatedAt
         try context.save()
+    }
+
+    func archiveCustomPreset(_ preset: DrinkPreset, updatedAt: Date = .now) throws {
+        guard preset.isDefault == false else { return }
+        preset.isArchived = true
+        preset.updatedAt = updatedAt
+        try context.save()
+    }
+
+    private static func iconName(for category: DrinkCategory) -> String {
+        switch category {
+        case .beer:
+            return "mug.fill"
+        case .chuhai:
+            return "sparkles"
+        case .highball:
+            return "tumbler.fill"
+        case .sake:
+            return "cup.and.saucer.fill"
+        case .wine:
+            return "wineglass.fill"
+        case .outside:
+            return "yensign.circle.fill"
+        case .custom:
+            return "plus.circle.fill"
+        }
     }
 
     private static func preferredPresetOrder(lhs: DrinkPreset, rhs: DrinkPreset) -> Bool {
@@ -209,4 +296,3 @@ struct DrinkPresetRepository {
         }
     }
 }
-

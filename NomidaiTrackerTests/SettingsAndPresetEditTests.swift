@@ -57,6 +57,127 @@ final class SettingsAndPresetEditTests: XCTestCase {
         XCTAssertEqual(entry.amountYen, 3_500)
         XCTAssertEqual(entry.pureAlcoholTenthsGram, 0)
     }
+
+    func testCreateCustomPresetsAllowsThreeFreeSlots() throws {
+        let container = try makeContainer()
+        let presetRepository = DrinkPresetRepository(context: container.mainContext)
+
+        for index in 1...DrinkPresetRepository.freeCustomPresetLimit {
+            _ = try presetRepository.createCustomPreset(
+                name: "カスタム\(index)",
+                category: .custom,
+                location: .home,
+                defaultPriceYen: 200,
+                volumeML: 350,
+                abvTenthsPercent: 50,
+                isProUnlocked: false
+            )
+        }
+
+        XCTAssertEqual(try presetRepository.countActiveCustomPresets(), 3)
+        XCTAssertFalse(try presetRepository.canCreateCustomPreset(isProUnlocked: false))
+    }
+
+    func testCreateCustomPresetBlocksFourthFreePreset() throws {
+        let container = try makeContainer()
+        let presetRepository = DrinkPresetRepository(context: container.mainContext)
+
+        for index in 1...DrinkPresetRepository.freeCustomPresetLimit {
+            _ = try presetRepository.createCustomPreset(
+                name: "カスタム\(index)",
+                category: .custom,
+                location: .home,
+                defaultPriceYen: 200,
+                volumeML: 350,
+                abvTenthsPercent: 50,
+                isProUnlocked: false
+            )
+        }
+
+        XCTAssertThrowsError(
+            try presetRepository.createCustomPreset(
+                name: "カスタム4",
+                category: .custom,
+                location: .home,
+                defaultPriceYen: 200,
+                volumeML: 350,
+                abvTenthsPercent: 50,
+                isProUnlocked: false
+            )
+        ) { error in
+            XCTAssertEqual(error as? DrinkPresetRepositoryError, .customPresetLimitReached)
+        }
+    }
+
+    func testCreateCustomPresetAllowsFourthWhenProUnlocked() throws {
+        let container = try makeContainer()
+        let presetRepository = DrinkPresetRepository(context: container.mainContext)
+
+        for index in 1...DrinkPresetRepository.freeCustomPresetLimit {
+            _ = try presetRepository.createCustomPreset(
+                name: "カスタム\(index)",
+                category: .custom,
+                location: .home,
+                defaultPriceYen: 200,
+                volumeML: 350,
+                abvTenthsPercent: 50,
+                isProUnlocked: false
+            )
+        }
+
+        let fourth = try presetRepository.createCustomPreset(
+            name: "カスタム4",
+            category: .custom,
+            location: .home,
+            defaultPriceYen: 250,
+            volumeML: 500,
+            abvTenthsPercent: 70,
+            isProUnlocked: true
+        )
+
+        XCTAssertEqual(fourth.name, "カスタム4")
+        XCTAssertEqual(try presetRepository.countActiveCustomPresets(), 4)
+    }
+
+    func testArchiveCustomPresetFreesFreeSlot() throws {
+        let container = try makeContainer()
+        let presetRepository = DrinkPresetRepository(context: container.mainContext)
+        let preset = try presetRepository.createCustomPreset(
+            name: "カスタム",
+            category: .custom,
+            location: .home,
+            defaultPriceYen: 200,
+            volumeML: 350,
+            abvTenthsPercent: 50,
+            isProUnlocked: false
+        )
+
+        try presetRepository.archiveCustomPreset(preset)
+
+        XCTAssertEqual(try presetRepository.countActiveCustomPresets(), 0)
+        XCTAssertTrue(try presetRepository.canCreateCustomPreset(isProUnlocked: false))
+    }
+
+    func testCreateOutsideCustomPresetStoresAmountOnly() throws {
+        let container = try makeContainer()
+        let presetRepository = DrinkPresetRepository(context: container.mainContext)
+
+        let preset = try presetRepository.createCustomPreset(
+            name: "外飲み二次会",
+            category: .beer,
+            location: .outside,
+            defaultPriceYen: 4_000,
+            volumeML: 500,
+            abvTenthsPercent: 50,
+            isProUnlocked: false
+        )
+
+        XCTAssertEqual(preset.category, .outside)
+        XCTAssertEqual(preset.location, .outside)
+        XCTAssertEqual(preset.defaultPriceYen, 4_000)
+        XCTAssertEqual(preset.volumeML, 0)
+        XCTAssertEqual(preset.abvTenthsPercent, 0)
+    }
 }
 
 final class PresetEditValidatorTests: XCTestCase {

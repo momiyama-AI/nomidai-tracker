@@ -47,6 +47,7 @@
 "common.cancel" = "キャンセル";
 "common.ok" = "OK";
 "common.save" = "保存";
+"common.delete" = "削除";
 
 "settings.title" = "設定";
 "settings.baseline.header" = "基準値";
@@ -64,6 +65,28 @@
 "preset.edit.field.volume" = "容量(ml)";
 "preset.edit.field.abv" = "度数(%)";
 "preset.edit.outside.note" = "外飲みは金額のみ入力のため、容量・度数の編集はありません";
+"preset.create.title" = "プリセット追加";
+"preset.create.field.name" = "名前";
+"preset.create.field.location" = "場所";
+"preset.create.field.category" = "種類";
+"preset.create.error.title" = "保存できませんでした";
+"preset.create.error.nameRequired" = "名前を入力してください。";
+"preset.create.error.saveFailed" = "プリセットの保存に失敗しました。";
+"preset.custom.add" = "カスタムプリセットを追加";
+"preset.custom.status" = "カスタム枠";
+"preset.custom.status.free" = "%d/%d件  残り%d件";
+"preset.custom.status.unlimited" = "無制限";
+"preset.custom.free.note" = "無料版ではカスタムプリセットを3件まで追加できます。";
+"preset.custom.pro.note" = "Pro機能が有効なため、カスタムプリセットを無制限に追加できます。";
+"preset.custom.pro.feature" = "カスタムプリセット無制限";
+"preset.custom.badge" = "カスタム";
+"drink.category.beer" = "ビール";
+"drink.category.chuhai" = "チューハイ";
+"drink.category.highball" = "ハイボール";
+"drink.category.sake" = "日本酒";
+"drink.category.wine" = "ワイン";
+"drink.category.outside" = "外飲み";
+"drink.category.custom" = "その他";
 
 "wealth.level.grandRich" = "大富豪";
 "wealth.level.rich" = "富豪";
