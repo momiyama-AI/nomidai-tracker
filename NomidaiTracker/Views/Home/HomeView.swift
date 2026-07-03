@@ -56,14 +56,15 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: 16) {
                     totalCard
-                    CharacterView(level: wealthLevel, line: characterLine)
+                    characterStage
                     comparisonRow
                     statsGrid
                     actionButtons
                 }
-                .padding(20)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 18)
             }
             .navigationTitle(Text("app.title"))
             .toolbar {
@@ -97,6 +98,12 @@ struct HomeView: View {
                 .monospacedDigit()
         }
         .frame(maxWidth: .infinity)
+    }
+
+    private var characterStage: some View {
+        CharacterView(level: wealthLevel, line: characterLine)
+            .layoutPriority(1)
+            .padding(.top, -2)
     }
 
     private var comparisonRow: some View {
