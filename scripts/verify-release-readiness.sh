@@ -93,7 +93,9 @@ require_file "AppStore/privacy-answers.md"
 require_file "AppStore/export-compliance.md"
 require_file "AppStore/age-rating.md"
 require_file "AppStore/iap-products.md"
+require_file "AppStore/signing-diagnostics.md"
 require_file "scripts/collect-release-evidence.sh"
+require_file "scripts/diagnose-signing.sh"
 require_dir "docs"
 
 plutil -lint NomidaiTracker/Resources/PrivacyInfo.xcprivacy >/dev/null && ok "PrivacyInfo.xcprivacy plist is valid" || fail "PrivacyInfo.xcprivacy plist is invalid"
@@ -153,6 +155,7 @@ require_png_size "NomidaiTracker/Resources/Assets.xcassets/AppIcon.appiconset/Ap
 
 bash -n scripts/archive-testflight.sh && ok "archive-testflight.sh syntax is valid" || fail "archive-testflight.sh syntax is invalid"
 bash -n scripts/collect-release-evidence.sh && ok "collect-release-evidence.sh syntax is valid" || fail "collect-release-evidence.sh syntax is invalid"
+bash -n scripts/diagnose-signing.sh && ok "diagnose-signing.sh syntax is valid" || fail "diagnose-signing.sh syntax is invalid"
 bash -n scripts/verify-pages.sh && ok "verify-pages.sh syntax is valid" || fail "verify-pages.sh syntax is invalid"
 bash -n scripts/push-github.sh && ok "push-github.sh syntax is valid" || fail "push-github.sh syntax is invalid"
 python3 scripts/verify-app-store-metadata.py && ok "App Store metadata is within configured limits" || fail "App Store metadata check failed"
