@@ -9,6 +9,7 @@ struct HomeView: View {
     @State private var previousMonthTotalYen = 0
     @State private var dryDayCount = 0
     @State private var baselineMonthlyYen = 5_500
+    @State private var monthlyBudgetYen: Int?
 
     private let calendar = Calendar.current
 
@@ -31,6 +32,22 @@ struct HomeView: View {
         return NSLocalizedString(key, comment: "")
     }
 
+    private var budgetStatus: BudgetStatus? {
+        guard let monthlyBudgetYen else { return nil }
+        return BudgetCalculator.status(budgetYen: monthlyBudgetYen, spentYen: totalAmountYen, on: .now)
+    }
+
+    private var budgetRemainingText: String {
+        guard let budgetStatus else { return NSLocalizedString("home.budget.notSet", comment: "") }
+        return CurrencyFormatter.yenString(budgetStatus.remainingYen)
+    }
+
+    private var budgetPaceText: String {
+        guard let budgetStatus else { return NSLocalizedString("home.budget.notSet", comment: "") }
+        let percent = Int((budgetStatus.paceRatio * 100).rounded())
+        return String(format: NSLocalizedString("home.budget.pace.value", comment: ""), percent)
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -44,6 +61,15 @@ struct HomeView: View {
                 .padding(20)
             }
             .navigationTitle(Text("app.title"))
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                }
+            }
             .onAppear(perform: reload)
             .onChange(of: isPresentingQuickRecord) { _, isPresenting in
                 if !isPresenting {
@@ -101,6 +127,8 @@ struct HomeView: View {
             StatTileView(title: "home.breakdown.outside", value: CurrencyFormatter.yenString(outsideAmountYen))
             StatTileView(title: "home.pureAlcohol.label", value: AlcoholCalculator.formattedTenthsGram(pureAlcoholTenthsGram))
             StatTileView(title: "home.dryDays.label", value: dryDaysValueText)
+            StatTileView(title: "home.budget.remaining.label", value: budgetRemainingText)
+            StatTileView(title: "home.budget.pace.label", value: budgetPaceText)
         }
     }
 
@@ -146,7 +174,9 @@ struct HomeView: View {
             summary = try summaryRepository.monthlySummary(containing: .now)
             previousMonthTotalYen = try summaryRepository.previousMonthSameElapsedTotalYen(upTo: .now)
             dryDayCount = try summaryRepository.dryDayCount(containing: .now)
-            baselineMonthlyYen = try SettingsRepository(context: modelContext).fetchOrCreateSettings().baselineMonthlyYen
+            let settings = try SettingsRepository(context: modelContext).fetchOrCreateSettings()
+            baselineMonthlyYen = settings.baselineMonthlyYen
+            monthlyBudgetYen = settings.monthlyBudgetYen
         } catch {
             assertionFailure("ホーム画面のデータ取得に失敗しました: \(error)")
         }

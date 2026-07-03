@@ -175,6 +175,20 @@ struct DrinkPresetRepository {
         try context.save()
     }
 
+    func updatePreset(
+        _ preset: DrinkPreset,
+        defaultPriceYen: Int,
+        volumeML: Int,
+        abvTenthsPercent: Int,
+        updatedAt: Date = .now
+    ) throws {
+        preset.defaultPriceYen = max(0, defaultPriceYen)
+        preset.volumeML = max(0, volumeML)
+        preset.abvTenthsPercent = max(0, abvTenthsPercent)
+        preset.updatedAt = updatedAt
+        try context.save()
+    }
+
     private static func preferredPresetOrder(lhs: DrinkPreset, rhs: DrinkPreset) -> Bool {
         if lhs.usageCount != rhs.usageCount {
             return lhs.usageCount > rhs.usageCount

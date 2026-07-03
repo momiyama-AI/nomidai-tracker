@@ -44,6 +44,13 @@
 		B1B2B3B40000000000000024 /* SummaryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000024 /* SummaryRepositoryTests.swift */; };
 		B1B2B3B40000000000000025 /* DrySpendingCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000025 /* DrySpendingCalculatorTests.swift */; };
 		B1B2B3B40000000000000026 /* HeatmapIntensityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000026 /* HeatmapIntensityTests.swift */; };
+		B1B2B3B40000000000000027 /* BudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000027 /* BudgetCalculator.swift */; };
+		B1B2B3B40000000000000028 /* PresetEditValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000028 /* PresetEditValidator.swift */; };
+		B1B2B3B40000000000000029 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F40000000000000029 /* SettingsView.swift */; };
+		B1B2B3B4000000000000002A /* PresetEditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002A /* PresetEditListView.swift */; };
+		B1B2B3B4000000000000002B /* PresetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002B /* PresetEditView.swift */; };
+		B1B2B3B4000000000000002C /* BudgetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002C /* BudgetCalculatorTests.swift */; };
+		B1B2B3B4000000000000002D /* SettingsAndPresetEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002D /* SettingsAndPresetEditTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +103,13 @@
 		F1F2F3F40000000000000024 /* SummaryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryRepositoryTests.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000025 /* DrySpendingCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrySpendingCalculatorTests.swift; sourceTree = "<group>"; };
 		F1F2F3F40000000000000026 /* HeatmapIntensityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapIntensityTests.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000027 /* BudgetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculator.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000028 /* PresetEditValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetEditValidator.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000029 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000002A /* PresetEditListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetEditListView.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000002B /* PresetEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetEditView.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000002C /* BudgetCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculatorTests.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000002D /* SettingsAndPresetEditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAndPresetEditTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +173,8 @@
 				F1F2F3F40000000000000024 /* SummaryRepositoryTests.swift */,
 				F1F2F3F40000000000000025 /* DrySpendingCalculatorTests.swift */,
 				F1F2F3F40000000000000026 /* HeatmapIntensityTests.swift */,
+				F1F2F3F4000000000000002C /* BudgetCalculatorTests.swift */,
+				F1F2F3F4000000000000002D /* SettingsAndPresetEditTests.swift */,
 			);
 			path = NomidaiTrackerTests;
 			sourceTree = "<group>";
@@ -204,6 +220,8 @@
 				F1F2F3F40000000000000019 /* QuickRecordInputValidator.swift */,
 				F1F2F3F4000000000000001D /* DrySpendingCalculator.swift */,
 				F1F2F3F4000000000000001E /* HeatmapIntensity.swift */,
+				F1F2F3F40000000000000027 /* BudgetCalculator.swift */,
+				F1F2F3F40000000000000028 /* PresetEditValidator.swift */,
 			);
 			path = Calculators;
 			sourceTree = "<group>";
@@ -268,6 +286,9 @@
 		A1B2C3D4000000000000001A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F1F2F3F40000000000000029 /* SettingsView.swift */,
+				F1F2F3F4000000000000002A /* PresetEditListView.swift */,
+				F1F2F3F4000000000000002B /* PresetEditView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -417,6 +438,11 @@
 				B1B2B3B40000000000000021 /* HomeView.swift in Sources */,
 				B1B2B3B40000000000000022 /* CalendarMonthView.swift in Sources */,
 				B1B2B3B40000000000000023 /* DayEntriesListView.swift in Sources */,
+				B1B2B3B40000000000000027 /* BudgetCalculator.swift in Sources */,
+				B1B2B3B40000000000000028 /* PresetEditValidator.swift in Sources */,
+				B1B2B3B40000000000000029 /* SettingsView.swift in Sources */,
+				B1B2B3B4000000000000002A /* PresetEditListView.swift in Sources */,
+				B1B2B3B4000000000000002B /* PresetEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +458,8 @@
 				B1B2B3B40000000000000024 /* SummaryRepositoryTests.swift in Sources */,
 				B1B2B3B40000000000000025 /* DrySpendingCalculatorTests.swift in Sources */,
 				B1B2B3B40000000000000026 /* HeatmapIntensityTests.swift in Sources */,
+				B1B2B3B4000000000000002C /* BudgetCalculatorTests.swift in Sources */,
+				B1B2B3B4000000000000002D /* SettingsAndPresetEditTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

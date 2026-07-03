@@ -12,6 +12,10 @@
 "home.dryDays.label" = "休肝日";
 "home.dryDays.value" = "%d日";
 "home.calendar.button" = "カレンダーを見る";
+"home.budget.remaining.label" = "予算残額";
+"home.budget.pace.label" = "消化ペース";
+"home.budget.notSet" = "未設定";
+"home.budget.pace.value" = "%d%%";
 
 "calendar.title" = "カレンダー";
 "calendar.weekday.0" = "日";
@@ -42,6 +46,24 @@
 
 "common.cancel" = "キャンセル";
 "common.ok" = "OK";
+"common.save" = "保存";
+
+"settings.title" = "設定";
+"settings.baseline.header" = "基準値";
+"settings.baseline.field" = "基準値(円)";
+"settings.baseline.source" = "総務省家計調査ベースの目安です(単身世帯の酒類代 約2,500円 + 外食飲酒代 約3,000円)。";
+"settings.budget.header" = "月次予算";
+"settings.budget.enabled" = "月次予算を設定する";
+"settings.budget.field" = "月次予算(円)";
+"settings.presets.link" = "プリセットを編集";
+"settings.presets.title" = "プリセット編集";
+"settings.notice.header" = "ご利用にあたって";
+"settings.notice.moderateDrinking" = "お酒は20歳になってから。飲酒運転は法律で禁止されています。適量を守り、周囲にも配慮しながら楽しみましょう。";
+
+"preset.edit.field.price" = "価格(円)";
+"preset.edit.field.volume" = "容量(ml)";
+"preset.edit.field.abv" = "度数(%)";
+"preset.edit.outside.note" = "外飲みは金額のみ入力のため、容量・度数の編集はありません";
 
 "wealth.level.grandRich" = "大富豪";
 "wealth.level.rich" = "富豪";
