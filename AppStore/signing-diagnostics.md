@@ -18,7 +18,7 @@ Signing diagnostics passed.
 
 ## 確認する項目
 
-- Team ID: `K4RPQR296Y`
+- Team ID: `H79G72QG4F`
 - App Bundle ID: `com.momi0216yama.nomidaitracker`
 - Widget Bundle ID: `com.momi0216yama.nomidaitracker.widget`
 - App Group: `group.com.momi0216yama.nomidaitracker`

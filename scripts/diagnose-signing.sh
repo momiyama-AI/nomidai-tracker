@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TEAM_ID="${TEAM_ID:-K4RPQR296Y}"
+TEAM_ID="${TEAM_ID:-H79G72QG4F}"
 APP_BUNDLE_ID="${APP_BUNDLE_ID:-com.momi0216yama.nomidaitracker}"
 WIDGET_BUNDLE_ID="${WIDGET_BUNDLE_ID:-com.momi0216yama.nomidaitracker.widget}"
 APP_GROUP_ID="${APP_GROUP_ID:-group.com.momi0216yama.nomidaitracker}"

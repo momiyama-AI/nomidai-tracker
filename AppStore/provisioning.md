@@ -36,7 +36,7 @@ bash scripts/archive-testflight.sh
 1. クラウドMacのXcodeを開く。
 2. `Xcode > Settings > Accounts` を開く。
 3. Apple ID `m0mi0216yama@gmail.com` を再ログインする。
-4. Team `K4RPQR296Y` が表示されることを確認する。
+4. Team `H79G72QG4F` が表示されることを確認する。
 5. Apple DeveloperサイトまたはXcodeの自動管理で以下を作成する。
    - App ID: `com.momi0216yama.nomidaitracker`
    - Widget App ID: `com.momi0216yama.nomidaitracker.widget`

@@ -22,7 +22,7 @@ bash scripts/archive-testflight.sh
 `diagnose-signing.sh`:
 
 ```text
-OK: Project uses Team ID K4RPQR296Y
+OK: Project uses Team ID H79G72QG4F
 OK: Project app bundle ID is com.momi0216yama.nomidaitracker
 OK: Project widget bundle ID is com.momi0216yama.nomidaitracker.widget
 OK: Project uses Automatic signing
@@ -56,7 +56,7 @@ Cloud MacのXcodeで以下を行います。
 1. `Xcode > Settings > Accounts` を開く。
 2. Apple ID `m0mi0216yama@gmail.com` を一度サインアウト/削除する。
 3. `Add Apple Account...` から同じApple IDを再追加し、2FAまで完了する。
-4. Team `K4RPQR296Y` が表示されることを確認する。
+4. Team `H79G72QG4F` が表示されることを確認する。
 5. XcodeでAutomatic signingによりProvisioning Profileが生成されることを確認する。
 6. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
 7. `bash scripts/archive-testflight.sh` を再実行する。

@@ -104,7 +104,7 @@ plutil -lint NomidaiTracker/Resources/PrivacyInfo.xcprivacy >/dev/null && ok "Pr
 plutil -lint NomidaiTracker/NomidaiTracker.entitlements >/dev/null && ok "App entitlements plist is valid" || fail "App entitlements plist is invalid"
 plutil -lint NomidaiTrackerWidget/NomidaiTrackerWidget.entitlements >/dev/null && ok "Widget entitlements plist is valid" || fail "Widget entitlements plist is invalid"
 
-require_text "NomidaiTracker.xcodeproj/project.pbxproj" "DEVELOPMENT_TEAM = K4RPQR296Y;" "Team ID is K4RPQR296Y"
+require_text "NomidaiTracker.xcodeproj/project.pbxproj" "DEVELOPMENT_TEAM = H79G72QG4F;" "Team ID is H79G72QG4F"
 require_text "NomidaiTracker.xcodeproj/project.pbxproj" "PRODUCT_BUNDLE_IDENTIFIER = com.momi0216yama.nomidaitracker;" "App bundle ID is configured"
 require_text "NomidaiTracker.xcodeproj/project.pbxproj" "PRODUCT_BUNDLE_IDENTIFIER = com.momi0216yama.nomidaitracker.widget;" "Widget bundle ID is configured"
 require_text "NomidaiTracker.xcodeproj/project.pbxproj" "CODE_SIGN_STYLE = Automatic;" "Automatic signing is enabled"

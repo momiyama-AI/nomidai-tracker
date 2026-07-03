@@ -6,7 +6,7 @@
 
 - [ ] `AppStore/apple-developer-setup.md` の手順を開く。
 - [ ] Xcode > Settings > Accounts でApple IDに再ログインする。
-- [ ] Team `K4RPQR296Y` が表示されることを確認する。
+- [x] Team `H79G72QG4F` が表示されることを確認する。
 - [x] App ID `com.momi0216yama.nomidaitracker` を作成する。
 - [x] Widget App ID `com.momi0216yama.nomidaitracker.widget` を作成する。
 - [x] App Group `group.com.momi0216yama.nomidaitracker` を作成する。
