@@ -163,6 +163,7 @@
 		F1F2F3F4000000000000003A /* SpendingChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingChartView.swift; sourceTree = "<group>"; };
 		F1F2F3F4000000000000003B /* CSVExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVExportView.swift; sourceTree = "<group>"; };
 		F1F2F3F4000000000000003C /* CSVExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVExporterTests.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000003D /* NomidaiTracker.storekit */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NomidaiTracker.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +197,7 @@
 				A1B2C3D4000000000000000E /* NomidaiTracker */,
 				A1B2C3D4000000000000003B /* NomidaiTrackerWidget */,
 				A1B2C3D4000000000000000F /* NomidaiTrackerTests */,
+				A1B2C3D4000000000000003D /* StoreKit */,
 				A1B2C3D40000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -390,6 +392,14 @@
 				F1F2F3F4000000000000003B /* CSVExportView.swift */,
 			);
 			path = Reports;
+			sourceTree = "<group>";
+		};
+		A1B2C3D4000000000000003D /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				F1F2F3F4000000000000003D /* NomidaiTracker.storekit */,
+			);
+			path = StoreKit;
 			sourceTree = "<group>";
 		};
 		A1B2C3D4000000000000001C /* Components */ = {
