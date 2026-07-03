@@ -2,11 +2,21 @@
 
 最終更新日: 2026年7月3日
 
+## 2026年7月3日 追記
+
+- App Store Connectに新規アプリ `飲み代トラッカー` を作成済み。
+- App Store Connect App ID: `6787132445`
+- Bundle ID: `com.momi0216yama.nomidaitracker`
+- SKU: `nomidai-tracker-20260703`
+- `bash scripts/archive-testflight.sh` は `ARCHIVE_EXIT_STATUS:0` で成功。
+- `bash scripts/upload-testflight.sh` は `UPLOAD_EXIT_STATUS:0` で成功。
+- アップロードされたバイナリ: `NomidaiTracker`
+- App Store Connect側でTestFlightビルド処理が開始済み。
+
 ## 現在の状態
 
-TestFlightアップロード前のArchive作成で停止しています。
-アプリ本体のビルド/テスト/提出物チェックは通っており、Apple Developer側のApp ID/App Group作成と紐づけも完了しています。
-残りはCloud MacのXcodeに保存されているApple IDログインの再認証と、Provisioning Profileの自動生成です。
+TestFlightへの初回バイナリアップロードは成功しています。
+App Store Connect側のビルド処理完了後、TestFlightタブで内部テスター向けに配信できます。
 
 ## 実行済み
 
@@ -15,6 +25,7 @@ Cloud Macで以下を実行しました。
 ```sh
 bash scripts/diagnose-signing.sh
 bash scripts/archive-testflight.sh
+bash scripts/upload-testflight.sh
 ```
 
 ## 結果
@@ -37,32 +48,23 @@ OK: Widget provisioning profile found: NomidaiTrackerWidget AppStore
 `archive-testflight.sh`:
 
 ```text
-ARCHIVE_EXIT_STATUS:65
+ARCHIVE_EXIT_STATUS:0
 ```
 
-主なエラー:
+`upload-testflight.sh`:
 
 ```text
-Invalid credentials in keychain for EFF0CB17-EA24-4D67-8506-615241060D18, missing Xcode-Username
-No Accounts: Add a new account in Accounts settings.
-Unable to log in with account 'm0mi0216yama@gmail.com'.
-The login details for account 'm0mi0216yama@gmail.com' were rejected.
-No profiles for 'com.momi0216yama.nomidaitracker' were found.
-No profiles for 'com.momi0216yama.nomidaitracker.widget' were found.
+UPLOAD_EXIT_STATUS:0
+Uploaded NomidaiTracker
 ```
 
 ## 次に必要な操作
 
-Cloud MacのXcodeで以下を行います。
+App Store Connectで以下を行います。
 
-1. `Xcode > Settings > Accounts` を開く。
-2. Apple ID `m0mi0216yama@gmail.com` を一度サインアウト/削除する。
-3. `Add Apple Account...` から同じApple IDを再追加し、2FAまで完了する。
-4. Team `H79G72QG4F` が表示されることを確認する。
-5. Release signingが作成済みのApp Store用Provisioning Profileを参照していることを確認する。
-6. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
-7. `bash scripts/archive-testflight.sh` を再実行する。
-8. Archive成功後、OrganizerまたはXcode uploadコマンドでTestFlightへアップロードする。
+1. TestFlightタブでビルド処理完了を待つ。
+2. 輸出コンプライアンスなどの確認が出た場合は回答する。
+3. 内部テスターを追加して配信する。
 
 ## Apple Developer確認済み
 
