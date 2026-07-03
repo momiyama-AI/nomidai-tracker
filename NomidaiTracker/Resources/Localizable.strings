@@ -1,5 +1,24 @@
 "app.title" = "飲み代トラッカー";
 "home.placeholder.subtitle" = "ローカルデータを準備しています";
+"home.button.record" = "記録する";
+
+"quickrecord.title" = "クイック記録";
+"quickrecord.section.presets" = "プリセットを選択";
+"quickrecord.confirm.title" = "記録内容を確認";
+"quickrecord.field.quantity" = "数量";
+"quickrecord.field.amount" = "金額";
+"quickrecord.field.date" = "日時";
+"quickrecord.field.memo" = "メモ(任意)";
+"quickrecord.field.total" = "合計金額";
+"quickrecord.field.pureAlcohol" = "純アルコール量(参考)";
+"quickrecord.field.pureAlcohol.note.outside" = "外飲みは容量入力なしのため参考値は0.0gです";
+"quickrecord.button.save" = "記録する";
+"quickrecord.saved.title" = "記録しました";
+"quickrecord.location.home" = "家飲み";
+"quickrecord.location.outside" = "外飲み";
+
+"common.cancel" = "キャンセル";
+"common.ok" = "OK";
 
 "wealth.level.grandRich" = "大富豪";
 "wealth.level.rich" = "富豪";
