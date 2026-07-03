@@ -165,6 +165,34 @@ struct HomeView: View {
             }
             .buttonStyle(.bordered)
             .controlSize(.large)
+
+            NavigationLink {
+                SpendingChartView()
+            } label: {
+                Label {
+                    Text("home.reports.chart.button")
+                } icon: {
+                    Image(systemName: "chart.line.uptrend.xyaxis")
+                }
+                .font(.body.weight(.medium))
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+
+            NavigationLink {
+                CSVExportView()
+            } label: {
+                Label {
+                    Text("home.reports.csv.button")
+                } icon: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+                .font(.body.weight(.medium))
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
         }
     }
 

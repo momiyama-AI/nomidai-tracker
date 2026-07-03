@@ -43,6 +43,14 @@ struct SettingsView: View {
             }
 
             Section {
+                NavigationLink {
+                    PaywallView()
+                } label: {
+                    Text("settings.pro.link")
+                }
+            }
+
+            Section {
                 Text("settings.notice.moderateDrinking")
                     .font(.footnote)
                     .foregroundStyle(.secondary)

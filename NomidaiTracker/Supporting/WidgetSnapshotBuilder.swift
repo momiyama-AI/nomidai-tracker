@@ -5,18 +5,21 @@ import WidgetKit
 struct WidgetSnapshotBuilder {
     private let summaryRepository: SummaryRepository
     private let settingsRepository: SettingsRepository
+    private let purchaseRepository: PurchaseEntitlementRepository
     private let calendar: Calendar
 
     init(context: ModelContext, calendar: Calendar = .current) {
         self.summaryRepository = SummaryRepository(context: context, calendar: calendar)
         self.settingsRepository = SettingsRepository(context: context)
+        self.purchaseRepository = PurchaseEntitlementRepository(context: context)
         self.calendar = calendar
     }
 
-    func build(now: Date = .now, isMediumWidgetUnlocked: Bool = false) throws -> WidgetSnapshot {
+    func build(now: Date = .now, isMediumWidgetUnlocked: Bool? = nil) throws -> WidgetSnapshot {
         let summary = try summaryRepository.monthlySummary(containing: now)
         let settings = try settingsRepository.fetchOrCreateSettings(now: now)
         let dryDayCount = try summaryRepository.dryDayCount(containing: now, today: now)
+        let proUnlocked = try isMediumWidgetUnlocked ?? purchaseRepository.isProUnlocked(now: now)
         let wealthLevel = CharacterEngine.wealthLevel(
             monthlySpendingYen: summary.totalAmountYen,
             baselineMonthlyYen: settings.baselineMonthlyYen,
@@ -31,7 +34,7 @@ struct WidgetSnapshotBuilder {
             dryDayCount: dryDayCount,
             wealthLevelRawValue: wealthLevel.rawValue,
             updatedAt: now,
-            isMediumWidgetUnlocked: isMediumWidgetUnlocked
+            isMediumWidgetUnlocked: proUnlocked
         )
     }
 }
@@ -52,7 +55,7 @@ struct WidgetSnapshotRefresher {
         self.reloadTimelines = reloadTimelines
     }
 
-    func refresh(now: Date = .now, isMediumWidgetUnlocked: Bool = false) throws {
+    func refresh(now: Date = .now, isMediumWidgetUnlocked: Bool? = nil) throws {
         let snapshot = try builder.build(now: now, isMediumWidgetUnlocked: isMediumWidgetUnlocked)
         try store.save(snapshot)
         reloadTimelines()

@@ -91,3 +91,28 @@
 "widget.pro.locked" = "中サイズはPro機能";
 "widget.configuration.name" = "飲み代トラッカー";
 "widget.configuration.description" = "今月の飲み代を表示します。";
+
+"settings.pro.link" = "Pro機能と購入";
+
+"home.reports.chart.button" = "全期間グラフ";
+"home.reports.csv.button" = "CSV出力";
+
+"paywall.title" = "Pro機能";
+"paywall.products.header" = "購入";
+"paywall.restore" = "購入を復元";
+"paywall.terms" = "利用規約";
+"paywall.privacy" = "プライバシーポリシー";
+"paywall.status.unlocked" = "Pro機能が有効です";
+"paywall.message.productsUnavailable" = "購入情報を取得できませんでした。App Store Connect の商品設定を確認してください。";
+"paywall.message.unverified" = "購入の検証に失敗しました。";
+"paywall.message.purchaseCompleted" = "購入が完了しました。";
+"paywall.message.pending" = "購入は承認待ちです。";
+"paywall.message.unknown" = "購入結果を確認できませんでした。";
+"paywall.message.purchaseFailed" = "購入に失敗しました。";
+"paywall.message.restoreCompleted" = "購入履歴を確認しました。";
+"paywall.message.restoreFailed" = "購入復元に失敗しました。";
+"paywall.message.entitlementFailed" = "購入状態の保存に失敗しました。";
+
+"reports.chart.title" = "全期間グラフ";
+"reports.csv.title" = "CSV出力";
+"reports.csv.share" = "CSVを共有";
