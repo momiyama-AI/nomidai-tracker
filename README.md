@@ -31,6 +31,8 @@ xcodebuild test \
 
 Archive / TestFlightアップロードにはApple Developerの署名設定が必要です。現在の手順と未解決事項は `AppStore/provisioning.md` を参照してください。
 
+GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull requestで自動テストが走ります。
+
 ## App Store提出資料
 
 - `AppStore/submission.md`: App Store Connect入力メモ
@@ -38,6 +40,7 @@ Archive / TestFlightアップロードにはApple Developerの署名設定が必
 - `AppStore/age-rating.md`: 年齢制限回答案
 - `AppStore/iap-products.md`: アプリ内課金商品設定案
 - `AppStore/release-checklist.md`: リリース前チェックリスト
+- `AppStore/current-status.md`: 現在の準備状況と外部設定待ち
 - `AppStore/screenshots/`: 提出用スクリーンショット
 
 ## 法務ページ

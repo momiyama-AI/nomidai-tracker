@@ -1,0 +1,33 @@
+name: iOS CI
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Build and test
+    runs-on: macos-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Show available simulators
+        run: xcrun simctl list devices available
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project NomidaiTracker.xcodeproj \
+            -scheme NomidaiTracker \
+            -destination 'platform=iOS Simulator,OS=latest,name=iPhone 16 Pro' \
+            CODE_SIGNING_ALLOWED=NO
