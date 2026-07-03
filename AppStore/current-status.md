@@ -26,7 +26,7 @@
 ## ローカル検証済み
 
 - クラウドMacで `xcodebuild test` 成功済み。
-- 最終確認: 2026年7月3日、iPhone 16 Pro Simulatorで `TEST SUCCEEDED`。
+- 最終確認: 2026年7月3日、Privacy Manifest更新後にiPhone 16 Pro Simulatorで `TEST SUCCEEDED`。
 - 実行コマンド:
 
 ```sh
@@ -35,7 +35,7 @@ xcodebuild test \
   -scheme NomidaiTracker \
   -destination 'platform=iOS Simulator,id=50FD8F69-DBF1-48B8-B877-E5ED3AD92AB2' \
   CODE_SIGNING_ALLOWED=NO \
-  -resultBundlePath /tmp/nomidai_current_ci.xcresult
+  -resultBundlePath /tmp/nomidai_privacy_full_test.xcresult
 ```
 
 ## 外部設定待ち
