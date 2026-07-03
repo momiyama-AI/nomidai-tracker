@@ -22,8 +22,8 @@ Signing diagnostics passed.
 - App Bundle ID: `com.momi0216yama.nomidaitracker`
 - Widget Bundle ID: `com.momi0216yama.nomidaitracker.widget`
 - App Group: `group.com.momi0216yama.nomidaitracker`
-- App用Provisioning Profile
-- Widget用Provisioning Profile
+- App用Provisioning Profile: `NomidaiTracker AppStore`
+- Widget用Provisioning Profile: `NomidaiTrackerWidget AppStore`
 
 ## 失敗した場合
 
@@ -34,7 +34,7 @@ Signing diagnostics passed.
 3. Apple DeveloperでWidget App ID `com.momi0216yama.nomidaitracker.widget` を作成する。
 4. App Group `group.com.momi0216yama.nomidaitracker` を作成する。
 5. App IDとWidget App IDの両方に同じApp Groupを紐づける。
-6. XcodeでAutomatic signingを有効にしたまま、Provisioning Profileが生成されるまで待つ。
+6. Apple DeveloperでApp Store用Provisioning Profileを作成し、Release signingで指定する。
 7. `bash scripts/archive-testflight.sh` を再実行する。
 
 ## 位置づけ

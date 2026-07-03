@@ -25,11 +25,13 @@ bash scripts/archive-testflight.sh
 OK: Project uses Team ID H79G72QG4F
 OK: Project app bundle ID is com.momi0216yama.nomidaitracker
 OK: Project widget bundle ID is com.momi0216yama.nomidaitracker.widget
-OK: Project uses Automatic signing
+OK: Release signing is manual for App Store profiles
+OK: App Store profile is specified for app target
+OK: App Store profile is specified for widget target
 OK: App entitlement has App Group
 OK: Widget entitlement has App Group
-NG: Provisioning profile directory is missing: /Users/user298254/Library/MobileDevice/Provisioning Profiles
-DIAGNOSE_EXIT_STATUS:1
+OK: App provisioning profile found: NomidaiTracker AppStore
+OK: Widget provisioning profile found: NomidaiTrackerWidget AppStore
 ```
 
 `archive-testflight.sh`:
@@ -57,7 +59,7 @@ Cloud MacのXcodeで以下を行います。
 2. Apple ID `m0mi0216yama@gmail.com` を一度サインアウト/削除する。
 3. `Add Apple Account...` から同じApple IDを再追加し、2FAまで完了する。
 4. Team `H79G72QG4F` が表示されることを確認する。
-5. XcodeでAutomatic signingによりProvisioning Profileが生成されることを確認する。
+5. Release signingが作成済みのApp Store用Provisioning Profileを参照していることを確認する。
 6. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
 7. `bash scripts/archive-testflight.sh` を再実行する。
 8. Archive成功後、OrganizerまたはXcode uploadコマンドでTestFlightへアップロードする。

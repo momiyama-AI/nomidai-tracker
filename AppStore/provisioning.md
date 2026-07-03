@@ -42,7 +42,7 @@ bash scripts/archive-testflight.sh
    - Widget App ID: `com.momi0216yama.nomidaitracker.widget`
    - App Group: `group.com.momi0216yama.nomidaitracker`
 6. App IDとWidget App IDにApp Groupを紐づける。
-7. Xcodeで `Automatically manage signing` が有効な状態でArchiveする。
+7. XcodeのRelease signingでApp Store用Provisioning Profileを指定してArchiveする。
 8. Archive成功後、OrganizerからTestFlightへアップロードする。
 
 ## コード側の確認状況

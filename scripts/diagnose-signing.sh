@@ -117,7 +117,9 @@ require_command /usr/libexec/PlistBuddy
 require_text "$PROJECT_FILE" "DEVELOPMENT_TEAM = $TEAM_ID;" "Project uses Team ID $TEAM_ID"
 require_text "$PROJECT_FILE" "PRODUCT_BUNDLE_IDENTIFIER = $APP_BUNDLE_ID;" "Project app bundle ID is $APP_BUNDLE_ID"
 require_text "$PROJECT_FILE" "PRODUCT_BUNDLE_IDENTIFIER = $WIDGET_BUNDLE_ID;" "Project widget bundle ID is $WIDGET_BUNDLE_ID"
-require_text "$PROJECT_FILE" "CODE_SIGN_STYLE = Automatic;" "Project uses Automatic signing"
+require_text "$PROJECT_FILE" "CODE_SIGN_STYLE = Manual;" "Release signing is manual for App Store profiles"
+require_text "$PROJECT_FILE" "PROVISIONING_PROFILE_SPECIFIER = \"NomidaiTracker AppStore\";" "App Store profile is specified for app target"
+require_text "$PROJECT_FILE" "PROVISIONING_PROFILE_SPECIFIER = \"NomidaiTrackerWidget AppStore\";" "App Store profile is specified for widget target"
 require_text "$APP_ENTITLEMENTS" "$APP_GROUP_ID" "App entitlement has App Group"
 require_text "$WIDGET_ENTITLEMENTS" "$APP_GROUP_ID" "Widget entitlement has App Group"
 
