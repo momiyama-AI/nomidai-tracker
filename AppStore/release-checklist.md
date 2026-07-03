@@ -20,6 +20,7 @@
 - [ ] 年齢制限を17+に設定する。
 - [ ] アプリ説明、サブタイトル、キーワードを入力する。
 - [ ] スクリーンショット5枚を登録する。
+- [ ] Review Notesに `AppStore/review-notes.md` の内容を入力する。
 - [ ] サポートURL、利用規約URL、プライバシーポリシーURLを入力する。
 - [ ] プライバシー回答を「データ収集なし」に設定する。
 - [ ] Privacy ManifestのRequired Reason APIがApp/Widget bundleに含まれることを確認する。

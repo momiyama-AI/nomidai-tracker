@@ -20,6 +20,7 @@
 - Required Reason APIのUserDefaults理由コード `CA92.1`
 - 輸出コンプライアンス用 `ITSAppUsesNonExemptEncryption = false` 設定
 - App Store Connect入力メモ
+- App Review Notes入力メモ
 - GitHub Pages公開手順
 - GitHub Actions CI設定
 

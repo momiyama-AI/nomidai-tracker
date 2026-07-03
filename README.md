@@ -40,6 +40,7 @@ GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull reque
 - `AppStore/export-compliance.md`: 輸出コンプライアンス回答案
 - `AppStore/age-rating.md`: 年齢制限回答案
 - `AppStore/iap-products.md`: アプリ内課金商品設定案
+- `AppStore/review-notes.md`: App Review Notes入力案
 - `AppStore/release-checklist.md`: リリース前チェックリスト
 - `AppStore/current-status.md`: 現在の準備状況と外部設定待ち
 - `AppStore/screenshots/`: 提出用スクリーンショット
