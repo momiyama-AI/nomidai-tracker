@@ -20,12 +20,16 @@ struct WidgetSnapshotBuilder {
         let settings = try settingsRepository.fetchOrCreateSettings(now: now)
         let dryDayCount = try summaryRepository.dryDayCount(containing: now, today: now)
         let proUnlocked = try isMediumWidgetUnlocked ?? purchaseRepository.isProUnlocked(now: now)
-        let wealthLevel = CharacterEngine.wealthLevel(
+        let monthCalculator = MonthCalculator(calendar: calendar)
+        let wealthLevel = CharacterEngine.lifestyleEvaluation(
             monthlySpendingYen: summary.totalAmountYen,
             baselineMonthlyYen: settings.baselineMonthlyYen,
+            monthlyBudgetYen: settings.monthlyBudgetYen,
+            dryDayCount: dryDayCount,
+            pureAlcoholTenthsGram: summary.pureAlcoholTenthsGram,
             on: now,
-            monthCalculator: MonthCalculator(calendar: calendar)
-        )
+            monthCalculator: monthCalculator
+        ).level
         let remainingBudgetYen = settings.monthlyBudgetYen.map { $0 - summary.totalAmountYen }
 
         return WidgetSnapshot(

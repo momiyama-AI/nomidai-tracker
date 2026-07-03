@@ -18,13 +18,18 @@ struct HomeView: View {
     private var outsideAmountYen: Int { summary?.outsideAmountYen ?? 0 }
     private var pureAlcoholTenthsGram: Int { summary?.pureAlcoholTenthsGram ?? 0 }
 
-    private var wealthLevel: WealthLevel {
-        CharacterEngine.wealthLevel(
+    private var lifestyleEvaluation: LifestyleEvaluation {
+        CharacterEngine.lifestyleEvaluation(
             monthlySpendingYen: totalAmountYen,
             baselineMonthlyYen: baselineMonthlyYen,
+            monthlyBudgetYen: monthlyBudgetYen,
+            dryDayCount: dryDayCount,
+            pureAlcoholTenthsGram: pureAlcoholTenthsGram,
             on: .now
         )
     }
+
+    private var wealthLevel: WealthLevel { lifestyleEvaluation.level }
 
     private var characterLine: String {
         let variant = calendar.component(.day, from: .now) % 2

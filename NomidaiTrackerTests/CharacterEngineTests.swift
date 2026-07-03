@@ -55,5 +55,70 @@ final class CharacterEngineTests: XCTestCase {
         XCTAssertEqual(ratio, 1.0, accuracy: 0.000_001)
         XCTAssertEqual(CharacterEngine.wealthLevel(for: ratio), .normal)
     }
-}
 
+    func testLifestyleEvaluationUsesBudgetPaceWhenBudgetIsConfigured() {
+        let evaluation = CharacterEngine.lifestyleEvaluation(
+            monthlySpendingYen: 1_500,
+            baselineMonthlyYen: 4_500,
+            monthlyBudgetYen: 9_000,
+            dryDayCount: 1,
+            pureAlcoholTenthsGram: 1_500,
+            elapsedDays: 10,
+            daysInMonth: 30
+        )
+
+        XCTAssertEqual(evaluation.baseRatio, 1.0, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.budgetPaceRatio, 0.5, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.adjustedRatio, 0.5, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.level, .rich)
+    }
+
+    func testLifestyleEvaluationMovesRicherWithManyDryDays() {
+        let evaluation = CharacterEngine.lifestyleEvaluation(
+            monthlySpendingYen: 1_050,
+            baselineMonthlyYen: 3_000,
+            monthlyBudgetYen: nil,
+            dryDayCount: 4,
+            pureAlcoholTenthsGram: 600,
+            elapsedDays: 10,
+            daysInMonth: 30
+        )
+
+        XCTAssertEqual(evaluation.baseRatio, 1.05, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.adjustedRatio, 0.89, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.level, .comfortable)
+    }
+
+    func testLifestyleEvaluationMovesPoorerWithNoDryDaysAndHighPureAlcohol() {
+        let evaluation = CharacterEngine.lifestyleEvaluation(
+            monthlySpendingYen: 1_420,
+            baselineMonthlyYen: 3_000,
+            monthlyBudgetYen: nil,
+            dryDayCount: 0,
+            pureAlcoholTenthsGram: 5_200,
+            elapsedDays: 10,
+            daysInMonth: 30
+        )
+
+        XCTAssertEqual(evaluation.baseRatio, 1.42, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.adjustedRatio, 1.6, accuracy: 0.000_001)
+        XCTAssertEqual(evaluation.level, .broke)
+    }
+
+    func testLifestyleEvaluationIgnoresZeroBudgetAndAvoidsDivisionByZero() {
+        let evaluation = CharacterEngine.lifestyleEvaluation(
+            monthlySpendingYen: 0,
+            baselineMonthlyYen: 0,
+            monthlyBudgetYen: 0,
+            dryDayCount: 99,
+            pureAlcoholTenthsGram: -1,
+            elapsedDays: 0,
+            daysInMonth: 0
+        )
+
+        XCTAssertNil(evaluation.budgetPaceRatio)
+        XCTAssertTrue(evaluation.adjustedRatio.isFinite)
+        XCTAssertEqual(evaluation.adjustedRatio, 0)
+        XCTAssertEqual(evaluation.level, .grandRich)
+    }
+}

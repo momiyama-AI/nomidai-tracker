@@ -15,6 +15,13 @@ enum WealthLevel: String, CaseIterable, Equatable, Identifiable {
     }
 }
 
+struct LifestyleEvaluation: Equatable {
+    let level: WealthLevel
+    let adjustedRatio: Double
+    let baseRatio: Double
+    let budgetPaceRatio: Double?
+}
+
 enum CharacterEngine {
     static func spendingRatio(
         monthlySpendingYen: Int,
@@ -81,9 +88,93 @@ enum CharacterEngine {
         )
     }
 
+    static func lifestyleEvaluation(
+        monthlySpendingYen: Int,
+        baselineMonthlyYen: Int,
+        monthlyBudgetYen: Int?,
+        dryDayCount: Int,
+        pureAlcoholTenthsGram: Int,
+        elapsedDays: Int,
+        daysInMonth: Int
+    ) -> LifestyleEvaluation {
+        let safeElapsedDays = max(1, elapsedDays)
+        let safeDaysInMonth = max(1, daysInMonth)
+        let safeDryDayCount = min(max(0, dryDayCount), safeElapsedDays)
+        let safePureAlcoholTenthsGram = max(0, pureAlcoholTenthsGram)
+
+        let baseRatio = spendingRatio(
+            monthlySpendingYen: monthlySpendingYen,
+            baselineMonthlyYen: baselineMonthlyYen,
+            elapsedDays: safeElapsedDays,
+            daysInMonth: safeDaysInMonth
+        )
+
+        let budgetPaceRatio: Double?
+        let primaryRatio: Double
+        if let monthlyBudgetYen, monthlyBudgetYen > 0 {
+            let budgetStatus = BudgetCalculator.status(
+                budgetYen: monthlyBudgetYen,
+                spentYen: monthlySpendingYen,
+                elapsedDays: safeElapsedDays,
+                daysInMonth: safeDaysInMonth
+            )
+            budgetPaceRatio = budgetStatus.paceRatio
+            primaryRatio = budgetStatus.paceRatio
+        } else {
+            budgetPaceRatio = nil
+            primaryRatio = baseRatio
+        }
+
+        let expectedDryDays = max(1, safeElapsedDays / 4)
+        let manyDryDays = max(2, safeElapsedDays / 3)
+        var adjustedRatio = primaryRatio
+
+        if safeDryDayCount >= manyDryDays {
+            adjustedRatio -= 0.12
+        } else if safeDryDayCount >= expectedDryDays {
+            adjustedRatio -= 0.04
+        } else if safeDryDayCount == 0 && safeElapsedDays >= 4 {
+            adjustedRatio += 0.08
+        }
+
+        let averagePureAlcoholTenthsGram = safePureAlcoholTenthsGram / safeElapsedDays
+        if averagePureAlcoholTenthsGram >= 500 {
+            adjustedRatio += 0.10
+        } else if averagePureAlcoholTenthsGram <= 100 && safeDryDayCount >= expectedDryDays {
+            adjustedRatio -= 0.04
+        }
+
+        let clampedRatio = max(0, adjustedRatio)
+        return LifestyleEvaluation(
+            level: wealthLevel(for: clampedRatio),
+            adjustedRatio: clampedRatio,
+            baseRatio: baseRatio,
+            budgetPaceRatio: budgetPaceRatio
+        )
+    }
+
+    static func lifestyleEvaluation(
+        monthlySpendingYen: Int,
+        baselineMonthlyYen: Int,
+        monthlyBudgetYen: Int?,
+        dryDayCount: Int,
+        pureAlcoholTenthsGram: Int,
+        on date: Date,
+        monthCalculator: MonthCalculator = MonthCalculator()
+    ) -> LifestyleEvaluation {
+        lifestyleEvaluation(
+            monthlySpendingYen: monthlySpendingYen,
+            baselineMonthlyYen: baselineMonthlyYen,
+            monthlyBudgetYen: monthlyBudgetYen,
+            dryDayCount: dryDayCount,
+            pureAlcoholTenthsGram: pureAlcoholTenthsGram,
+            elapsedDays: monthCalculator.elapsedDaysInMonth(upTo: date),
+            daysInMonth: monthCalculator.daysInMonth(containing: date)
+        )
+    }
+
     static func lineLocalizationKey(for level: WealthLevel, variant: Int = 0) -> String {
         let normalizedVariant = max(0, min(1, variant))
         return "character.line.\(level.rawValue).\(normalizedVariant)"
     }
 }
-
