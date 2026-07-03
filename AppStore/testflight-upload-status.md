@@ -1,6 +1,16 @@
 # TestFlightアップロード状況
 
-最終更新日: 2026年7月3日
+最終更新日: 2026年7月4日
+
+## 2026年7月4日 追記
+
+- のみだぬき生活乱れ演出の反映版として、ビルド番号を `1.0 (2)` に更新済み。
+- Cloud Macで `bash scripts/diagnose-signing.sh` は成功。
+- Cloud Macで `bash scripts/archive-testflight.sh` は `ARCHIVE_EXIT_STATUS:0` で成功。
+- Cloud Macで `bash scripts/upload-testflight.sh` は `UPLOAD_EXIT_STATUS:0` で成功。
+- アップロードされたバイナリ: `NomidaiTracker`
+- App Store Connect側でTestFlightビルド `1.0 (2)` の処理が開始済み。
+- 初回アップロード時にXcodeのApple IDセッション期限切れとキーチェーン署名権限で一度停止したが、Xcode Apple Accountsの再確認とキーチェーン設定更新後にアップロード成功。
 
 ## 2026年7月3日 追記
 
@@ -18,7 +28,8 @@
 
 ## 現在の状態
 
-TestFlightへの初回バイナリアップロードは成功しています。
+TestFlightへの最新バイナリアップロードは成功しています。
+最新ビルド `1.0 (2)` はApp Store Connect側で処理中です。
 内部テストグループと内部テスター追加まで完了しています。
 
 ## 実行済み
@@ -84,4 +95,10 @@ App Store Connectで以下を行います。
 
 ```text
 /tmp/nomidai_archive_latest.log
+```
+
+最新Uploadログ:
+
+```text
+/tmp/nomidai_upload_latest.log
 ```
