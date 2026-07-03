@@ -3,6 +3,7 @@
 最終更新日: 2026年7月3日
 
 App Store Connectで新規アプリ、アプリ情報、価格、プライバシー、IAP、審査情報を入力するときの作業シートです。
+文字数/バイト数の確認は `python3 scripts/verify-app-store-metadata.py` で実行できます。
 
 ## 新規アプリ作成
 

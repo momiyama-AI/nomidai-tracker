@@ -75,6 +75,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
 require_command plutil
+require_command python3
 require_command sips
 
 require_file "NomidaiTracker.xcodeproj/project.pbxproj"
@@ -152,6 +153,7 @@ require_png_size "NomidaiTracker/Resources/Assets.xcassets/AppIcon.appiconset/Ap
 bash -n scripts/archive-testflight.sh && ok "archive-testflight.sh syntax is valid" || fail "archive-testflight.sh syntax is invalid"
 bash -n scripts/verify-pages.sh && ok "verify-pages.sh syntax is valid" || fail "verify-pages.sh syntax is invalid"
 bash -n scripts/push-github.sh && ok "push-github.sh syntax is valid" || fail "push-github.sh syntax is invalid"
+python3 scripts/verify-app-store-metadata.py && ok "App Store metadata is within configured limits" || fail "App Store metadata check failed"
 
 if [ "$failures" -eq 0 ]; then
   printf 'Release readiness local checks passed.\n'

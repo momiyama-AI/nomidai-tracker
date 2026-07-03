@@ -33,6 +33,7 @@ Archive / TestFlightアップロードにはApple Developerの署名設定が必
 Apple Developerで作成するApp ID/App Groupの詳細は `AppStore/apple-developer-setup.md` を参照してください。
 署名設定後のArchive確認は `bash scripts/archive-testflight.sh` で実行できます。
 提出前のローカル成果物確認は `bash scripts/verify-release-readiness.sh` で実行できます。
+App Store Connect入力値の文字数確認は `python3 scripts/verify-app-store-metadata.py` で実行できます。
 
 GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull requestで自動テストが走ります。
 `momiyama-AI/nomidai-tracker` 作成後の初回pushは `bash scripts/push-github.sh` で実行できます。
