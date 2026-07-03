@@ -86,6 +86,7 @@ GitHub Pagesで公開する場合:
 - `docs/support.md`
 
 リポジトリ名を `nomidai-tracker` にして、Pagesの公開元を `docs` に設定する。
+詳細手順は `AppStore/github-pages.md` を参照。
 
 ## プライバシー回答
 

@@ -1,0 +1,57 @@
+# 飲み代トラッカー
+
+飲み代トラッカーは、家飲み・外飲みの支出を端末内で記録し、今月の飲み代をすばやく確認するためのiPhoneアプリです。
+
+## 特徴
+
+- 完全ローカル動作。サーバー、外部API、アカウント登録なし。
+- SwiftUI / SwiftData / WidgetKit / StoreKit 2 を使用。
+- 家飲み・外飲みのクイック記録、月次サマリー、カレンダー、予算、ウィジェットに対応。
+- Pro機能として全期間グラフ、CSV出力、カスタムプリセット無制限、中サイズウィジェットを用意。
+- データ収集なしのプライバシーマニフェストを同梱。
+
+## 開発環境
+
+- Xcode 16系
+- Swift 5.10+
+- iOS 17.0+
+- 外部ライブラリなし
+
+## ビルドとテスト
+
+クラウドMacまたはmacOS上で実行します。
+
+```sh
+xcodebuild test \
+  -project NomidaiTracker.xcodeproj \
+  -scheme NomidaiTracker \
+  -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+  CODE_SIGNING_ALLOWED=NO
+```
+
+Archive / TestFlightアップロードにはApple Developerの署名設定が必要です。現在の手順と未解決事項は `AppStore/provisioning.md` を参照してください。
+
+## App Store提出資料
+
+- `AppStore/submission.md`: App Store Connect入力メモ
+- `AppStore/privacy-answers.md`: プライバシー回答案
+- `AppStore/age-rating.md`: 年齢制限回答案
+- `AppStore/iap-products.md`: アプリ内課金商品設定案
+- `AppStore/release-checklist.md`: リリース前チェックリスト
+- `AppStore/screenshots/`: 提出用スクリーンショット
+
+## 法務ページ
+
+GitHub Pagesで `docs` を公開元にすると、以下をApp Store Connectとアプリ内リンクで利用できます。
+
+- 利用規約: `https://momiyama-ai.github.io/nomidai-tracker/terms`
+- プライバシーポリシー: `https://momiyama-ai.github.io/nomidai-tracker/privacy`
+- サポート: `https://momiyama-ai.github.io/nomidai-tracker/support`
+
+公開手順は `AppStore/github-pages.md` を参照してください。
+
+## 重要な方針
+
+- 本アプリは酒類の支出記録アプリであり、健康改善、節酒、禁酒、依存症治療、医療助言を目的としません。
+- 記録データは原則として利用者の端末内に保存されます。
+- 仕様判断は `SPEC.md` を単一の真実として扱います。

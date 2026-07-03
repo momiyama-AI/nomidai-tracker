@@ -27,11 +27,15 @@
 
 ## GitHub Pages / 法務ページ
 
+- [ ] GitHubリポジトリ `momiyama-AI/nomidai-tracker` を作成する。
+- [ ] ローカルリポジトリにremoteを追加してpushする。
 - [ ] リポジトリ名またはPages URLをアプリ内URLと合わせる。
 - [ ] Pages公開元を `docs` に設定する。
 - [ ] `https://momiyama-ai.github.io/nomidai-tracker/terms` を開けることを確認する。
 - [ ] `https://momiyama-ai.github.io/nomidai-tracker/privacy` を開けることを確認する。
 - [ ] `https://momiyama-ai.github.io/nomidai-tracker/support` を開けることを確認する。
+
+詳細手順は `AppStore/github-pages.md` を参照。
 
 ## Xcode / TestFlight
 
