@@ -143,6 +143,7 @@ struct QuickRecordConfirmView: View {
 
             let presetRepository = DrinkPresetRepository(context: modelContext)
             try presetRepository.incrementUsage(for: preset, usedAt: occurredAt)
+            try WidgetSnapshotRefresher(context: modelContext).refresh()
 
             onSaved()
             showSavedAlert = true

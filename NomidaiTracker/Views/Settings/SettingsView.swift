@@ -77,6 +77,7 @@ struct SettingsView: View {
         guard let value = QuickRecordInputValidator.parseAmountYen(baselineText) else { return }
         do {
             try SettingsRepository(context: modelContext).setBaselineMonthlyYen(max(0, value), for: settings)
+            try WidgetSnapshotRefresher(context: modelContext).refresh()
         } catch {
             assertionFailure("基準値の保存に失敗しました: \(error)")
         }
@@ -91,6 +92,7 @@ struct SettingsView: View {
             } else {
                 try SettingsRepository(context: modelContext).setMonthlyBudgetYen(nil, for: settings)
             }
+            try WidgetSnapshotRefresher(context: modelContext).refresh()
         } catch {
             assertionFailure("予算の保存に失敗しました: \(error)")
         }

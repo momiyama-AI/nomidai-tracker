@@ -10,9 +10,9 @@ struct NomidaiTrackerApp: App {
             HomeView()
                 .task {
                     AppEnvironment.bootstrapIfNeeded(in: modelContainer)
+                    try? WidgetSnapshotRefresher(context: modelContainer.mainContext).refresh()
                 }
         }
         .modelContainer(modelContainer)
     }
 }
-

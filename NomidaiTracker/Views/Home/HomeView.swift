@@ -177,6 +177,7 @@ struct HomeView: View {
             let settings = try SettingsRepository(context: modelContext).fetchOrCreateSettings()
             baselineMonthlyYen = settings.baselineMonthlyYen
             monthlyBudgetYen = settings.monthlyBudgetYen
+            try WidgetSnapshotRefresher(context: modelContext).refresh()
         } catch {
             assertionFailure("ホーム画面のデータ取得に失敗しました: \(error)")
         }

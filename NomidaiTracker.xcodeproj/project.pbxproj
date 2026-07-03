@@ -51,6 +51,8 @@
 		B1B2B3B4000000000000002B /* PresetEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002B /* PresetEditView.swift */; };
 		B1B2B3B4000000000000002C /* BudgetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002C /* BudgetCalculatorTests.swift */; };
 		B1B2B3B4000000000000002D /* SettingsAndPresetEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002D /* SettingsAndPresetEditTests.swift */; };
+		B1B2B3B4000000000000002E /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002E /* WidgetSnapshot.swift */; };
+		B1B2B3B4000000000000002F /* WidgetSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2F3F4000000000000002F /* WidgetSnapshotTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +112,9 @@
 		F1F2F3F4000000000000002B /* PresetEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetEditView.swift; sourceTree = "<group>"; };
 		F1F2F3F4000000000000002C /* BudgetCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculatorTests.swift; sourceTree = "<group>"; };
 		F1F2F3F4000000000000002D /* SettingsAndPresetEditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAndPresetEditTests.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000002E /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		F1F2F3F4000000000000002F /* WidgetSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotTests.swift; sourceTree = "<group>"; };
+		F1F2F3F40000000000000030 /* NomidaiTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NomidaiTracker.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +180,7 @@
 				F1F2F3F40000000000000026 /* HeatmapIntensityTests.swift */,
 				F1F2F3F4000000000000002C /* BudgetCalculatorTests.swift */,
 				F1F2F3F4000000000000002D /* SettingsAndPresetEditTests.swift */,
+				F1F2F3F4000000000000002F /* WidgetSnapshotTests.swift */,
 			);
 			path = NomidaiTrackerTests;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 			children = (
 				F1F2F3F40000000000000010 /* AppGroup.swift */,
 				F1F2F3F40000000000000011 /* ProductIDs.swift */,
+				F1F2F3F4000000000000002E /* WidgetSnapshot.swift */,
+				F1F2F3F40000000000000030 /* NomidaiTracker.entitlements */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -427,6 +435,7 @@
 				B1B2B3B4000000000000000E /* SummaryRepository.swift in Sources */,
 				B1B2B3B40000000000000010 /* AppGroup.swift in Sources */,
 				B1B2B3B40000000000000011 /* ProductIDs.swift in Sources */,
+				B1B2B3B4000000000000002E /* WidgetSnapshot.swift in Sources */,
 				B1B2B3B40000000000000018 /* CurrencyFormatting.swift in Sources */,
 				B1B2B3B40000000000000019 /* QuickRecordInputValidator.swift in Sources */,
 				B1B2B3B4000000000000001A /* QuickRecordPresetListView.swift in Sources */,
@@ -460,6 +469,7 @@
 				B1B2B3B40000000000000026 /* HeatmapIntensityTests.swift in Sources */,
 				B1B2B3B4000000000000002C /* BudgetCalculatorTests.swift in Sources */,
 				B1B2B3B4000000000000002D /* SettingsAndPresetEditTests.swift in Sources */,
+				B1B2B3B4000000000000002F /* WidgetSnapshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NomidaiTracker/NomidaiTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -622,6 +633,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NomidaiTracker/NomidaiTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
@@ -731,4 +743,3 @@
 	};
 	rootObject = A1B2C3D40000000000000001 /* Project object */;
 }
-
