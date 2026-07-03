@@ -8,9 +8,9 @@
 
 現在のアプリ内URLは以下を参照しています。
 
-- `https://momiyama-ai.github.io/nomidai-tracker/terms`
-- `https://momiyama-ai.github.io/nomidai-tracker/privacy`
-- `https://momiyama-ai.github.io/nomidai-tracker/support`
+- `https://momiyama-ai.github.io/nomidai-tracker/terms/`
+- `https://momiyama-ai.github.io/nomidai-tracker/privacy/`
+- `https://momiyama-ai.github.io/nomidai-tracker/support/`
 
 このURLのまま使う場合、GitHubリポジトリ名は `nomidai-tracker` にします。別名のリポジトリにする場合は、`NomidaiTracker/Supporting/LegalLinks.swift` とApp Store ConnectのURLを同じ値に更新してください。
 
@@ -33,6 +33,12 @@ git push -u origin master
 - `https://momiyama-ai.github.io/nomidai-tracker/terms/`
 - `https://momiyama-ai.github.io/nomidai-tracker/privacy/`
 - `https://momiyama-ai.github.io/nomidai-tracker/support/`
+
+または、macOS/クラウドMac上で以下を実行する。
+
+```sh
+bash scripts/verify-pages.sh
+```
 
 ## App Store Connectへ入力するURL
 

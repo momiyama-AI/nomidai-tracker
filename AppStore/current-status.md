@@ -23,20 +23,21 @@
 - App Review Notes入力メモ
 - GitHub Pages公開手順
 - GitHub Actions CI設定
+- ペイウォール提出画像の月額サブスク説明反映
 
 ## ローカル検証済み
 
 - クラウドMacで `xcodebuild test` 成功済み。
-- 最終確認: 2026年7月3日、Privacy Manifest更新後にiPhone 16 Pro Simulatorで `TEST SUCCEEDED`。
+- 最終確認: 2026年7月3日、ペイウォール提出画像更新後にiPhone 16 Pro Simulatorで `TEST SUCCEEDED`。
 - 実行コマンド:
 
 ```sh
 xcodebuild test \
   -project NomidaiTracker.xcodeproj \
   -scheme NomidaiTracker \
-  -destination 'platform=iOS Simulator,id=50FD8F69-DBF1-48B8-B877-E5ED3AD92AB2' \
+  -destination id=50FD8F69-DBF1-48B8-B877-E5ED3AD92AB2 \
   CODE_SIGNING_ALLOWED=NO \
-  -resultBundlePath /tmp/nomidai_privacy_full_test.xcresult
+  -resultBundlePath /tmp/nomidai_paywall_screenshot_test.xcresult
 ```
 
 ## 外部設定待ち
@@ -44,9 +45,10 @@ xcodebuild test \
 ### GitHub
 
 - `momiyama-AI/nomidai-tracker` リポジトリは確認時点で未作成または未アクセス。
+- GitHub連携検索でも `momiyama-AI` 配下に `nomidai` 関連リポジトリは見つからなかった。
 - リポジトリ作成後、ローカルのremoteを追加してpushする。
 - GitHub Pagesの公開元を `docs` に設定する。
-- 法務ページURLが開けることを確認する。
+- `bash scripts/verify-pages.sh` で法務ページURLが開けることを確認する。
 
 ### Apple Developer
 

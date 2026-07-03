@@ -75,9 +75,9 @@ Pro対象:
 
 アプリ内リンク:
 
-- 利用規約: `https://momiyama-ai.github.io/nomidai-tracker/terms`
-- プライバシーポリシー: `https://momiyama-ai.github.io/nomidai-tracker/privacy`
-- サポート: `https://momiyama-ai.github.io/nomidai-tracker/support`
+- 利用規約: `https://momiyama-ai.github.io/nomidai-tracker/terms/`
+- プライバシーポリシー: `https://momiyama-ai.github.io/nomidai-tracker/privacy/`
+- サポート: `https://momiyama-ai.github.io/nomidai-tracker/support/`
 
 GitHub Pagesで公開する場合:
 

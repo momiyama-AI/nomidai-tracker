@@ -49,11 +49,12 @@ GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull reque
 
 GitHub Pagesで `docs` を公開元にすると、以下をApp Store Connectとアプリ内リンクで利用できます。
 
-- 利用規約: `https://momiyama-ai.github.io/nomidai-tracker/terms`
-- プライバシーポリシー: `https://momiyama-ai.github.io/nomidai-tracker/privacy`
-- サポート: `https://momiyama-ai.github.io/nomidai-tracker/support`
+- 利用規約: `https://momiyama-ai.github.io/nomidai-tracker/terms/`
+- プライバシーポリシー: `https://momiyama-ai.github.io/nomidai-tracker/privacy/`
+- サポート: `https://momiyama-ai.github.io/nomidai-tracker/support/`
 
 公開手順は `AppStore/github-pages.md` を参照してください。
+公開後の疎通確認には `bash scripts/verify-pages.sh` を使えます。
 
 ## 重要な方針
 
