@@ -12,11 +12,14 @@
 - `bash scripts/upload-testflight.sh` は `UPLOAD_EXIT_STATUS:0` で成功。
 - アップロードされたバイナリ: `NomidaiTracker`
 - App Store Connect側でTestFlightビルド処理が開始済み。
+- TestFlightビルド `1.0 (1)` は処理完了し、ステータス `提出準備完了` を確認済み。
+- 内部テストグループ `内部テスト` を作成済み。
+- 内部テスターとして `m0mi0216yama@gmail.com` を追加済み。ステータスは `招待済み`。
 
 ## 現在の状態
 
 TestFlightへの初回バイナリアップロードは成功しています。
-App Store Connect側のビルド処理完了後、TestFlightタブで内部テスター向けに配信できます。
+内部テストグループと内部テスター追加まで完了しています。
 
 ## 実行済み
 
@@ -62,9 +65,9 @@ Uploaded NomidaiTracker
 
 App Store Connectで以下を行います。
 
-1. TestFlightタブでビルド処理完了を待つ。
-2. 輸出コンプライアンスなどの確認が出た場合は回答する。
-3. 内部テスターを追加して配信する。
+1. 招待メールまたはTestFlightアプリから `飲み代トラッカー` を開く。
+2. 必要に応じてApp Store Connect上でテスト情報やメタデータを追加する。
+3. 次回以降のアップロードは `bash scripts/archive-testflight.sh` と `bash scripts/upload-testflight.sh` を実行する。
 
 ## Apple Developer確認済み
 
