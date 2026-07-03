@@ -41,6 +41,8 @@ ARCHIVE_EXIT_STATUS:65
 主なエラー:
 
 ```text
+Invalid credentials in keychain for EFF0CB17-EA24-4D67-8506-615241060D18, missing Xcode-Username
+No Accounts: Add a new account in Accounts settings.
 Unable to log in with account 'm0mi0216yama@gmail.com'.
 The login details for account 'm0mi0216yama@gmail.com' were rejected.
 No profiles for 'com.momi0216yama.nomidaitracker' were found.
@@ -52,12 +54,13 @@ No profiles for 'com.momi0216yama.nomidaitracker.widget' were found.
 Cloud MacのXcodeで以下を行います。
 
 1. `Xcode > Settings > Accounts` を開く。
-2. Apple ID `m0mi0216yama@gmail.com` を一度削除または再ログインする。
-3. Team `K4RPQR296Y` が表示されることを確認する。
-4. XcodeでAutomatic signingによりProvisioning Profileが生成されることを確認する。
-5. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
-6. `bash scripts/archive-testflight.sh` を再実行する。
-7. Archive成功後、OrganizerまたはXcode uploadコマンドでTestFlightへアップロードする。
+2. Apple ID `m0mi0216yama@gmail.com` を一度サインアウト/削除する。
+3. `Add Apple Account...` から同じApple IDを再追加し、2FAまで完了する。
+4. Team `K4RPQR296Y` が表示されることを確認する。
+5. XcodeでAutomatic signingによりProvisioning Profileが生成されることを確認する。
+6. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
+7. `bash scripts/archive-testflight.sh` を再実行する。
+8. Archive成功後、OrganizerまたはXcode uploadコマンドでTestFlightへアップロードする。
 
 ## Apple Developer確認済み
 

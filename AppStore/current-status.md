@@ -63,7 +63,8 @@ xcodebuild test \
 - 2026年7月3日にApple DeveloperでApp ID、Widget App ID、App Groupを作成済み。
 - App IDとWidget App IDの両方にApp Group `group.com.momi0216yama.nomidaitracker` を紐づけ済み。
 - 2026年7月3日にArchiveを再実行し、Cloud MacのXcode Apple IDログイン拒否とProvisioning Profile未作成で失敗。
-- XcodeのApple ID再ログインが必要。
+- 最新ログでは `missing Xcode-Username` と `No Accounts` が出ており、Xcodeのキーチェーン内アカウントが壊れている状態。
+- XcodeのApple IDを一度サインアウト/削除し、再追加する必要がある。
 - Provisioning Profileの生成が必要。
 - 再確認コマンド: `bash scripts/archive-testflight.sh`
 - 詳細手順: `AppStore/apple-developer-setup.md`
