@@ -49,6 +49,7 @@
 
 - [ ] `bash scripts/verify-release-readiness.sh` が成功する。
 - [ ] `xcodebuild test` が成功する。
+- [ ] `bash scripts/collect-release-evidence.sh` で提出前チェックとXCTestの証跡を保存する。
 - [ ] `bash scripts/archive-testflight.sh` またはXcodeでArchiveを作成する。
 - [ ] Archive OrganizerからValidateする。
 - [ ] TestFlightへアップロードする。

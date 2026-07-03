@@ -28,12 +28,14 @@
 - ペイウォール提出画像の月額サブスク説明反映
 - ローカル提出準備チェック `scripts/verify-release-readiness.sh`
 - App Storeメタデータ制限チェック `scripts/verify-app-store-metadata.py`
+- 提出前の証跡収集スクリプト `scripts/collect-release-evidence.sh`
 
 ## ローカル検証済み
 
 - クラウドMacで `xcodebuild test` 成功済み。
 - `bash scripts/verify-release-readiness.sh` で署名前の提出物整合性を確認可能。
 - `python3 scripts/verify-app-store-metadata.py` でApp Store Connect入力値の文字数/バイト数制限を確認可能。
+- Cloud Macで `bash scripts/collect-release-evidence.sh` を実行すると、提出前チェックとXCTestログを `/tmp/nomidai-release-evidence-*` に保存可能。
 - 最終確認: 2026年7月3日、ペイウォール提出画像更新後にiPhone 16 Pro Simulatorで `TEST SUCCEEDED`。
 - 実行コマンド:
 
