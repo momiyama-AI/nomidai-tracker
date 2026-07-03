@@ -63,11 +63,13 @@ Pro対象:
 
 - 利用規約: `https://momiyama-ai.github.io/nomidai-tracker/terms`
 - プライバシーポリシー: `https://momiyama-ai.github.io/nomidai-tracker/privacy`
+- サポート: `https://momiyama-ai.github.io/nomidai-tracker/support`
 
 GitHub Pagesで公開する場合:
 
 - `docs/terms.md`
 - `docs/privacy.md`
+- `docs/support.md`
 
 リポジトリ名を `nomidai-tracker` にして、Pagesの公開元を `docs` に設定する。
 

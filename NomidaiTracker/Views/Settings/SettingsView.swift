@@ -51,6 +51,22 @@ struct SettingsView: View {
             }
 
             Section {
+                Link(destination: LegalLinks.termsURL) {
+                    Label("settings.legal.terms", systemImage: "doc.text")
+                }
+
+                Link(destination: LegalLinks.privacyURL) {
+                    Label("settings.legal.privacy", systemImage: "hand.raised")
+                }
+
+                Link(destination: LegalLinks.supportURL) {
+                    Label("settings.legal.support", systemImage: "questionmark.circle")
+                }
+            } header: {
+                Text("settings.legal.header")
+            }
+
+            Section {
                 Text("settings.notice.moderateDrinking")
                     .font(.footnote)
                     .foregroundStyle(.secondary)

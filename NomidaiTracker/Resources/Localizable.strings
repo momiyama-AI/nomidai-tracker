@@ -116,6 +116,10 @@
 "widget.configuration.description" = "今月の飲み代を表示します。";
 
 "settings.pro.link" = "Pro機能と購入";
+"settings.legal.header" = "情報";
+"settings.legal.terms" = "利用規約";
+"settings.legal.privacy" = "プライバシーポリシー";
+"settings.legal.support" = "サポート";
 
 "home.reports.chart.button" = "全期間グラフ";
 "home.reports.csv.button" = "CSV出力";
