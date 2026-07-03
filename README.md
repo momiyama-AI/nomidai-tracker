@@ -30,6 +30,7 @@ xcodebuild test \
 ```
 
 Archive / TestFlightアップロードにはApple Developerの署名設定が必要です。現在の手順と未解決事項は `AppStore/provisioning.md` を参照してください。
+署名設定後のArchive確認は `bash scripts/archive-testflight.sh` で実行できます。
 
 GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull requestで自動テストが走ります。
 

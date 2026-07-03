@@ -52,11 +52,13 @@ xcodebuild test \
 
 ### Apple Developer
 
+- 2026年7月3日にArchiveを再実行し、Apple IDログイン拒否とProvisioning Profile未作成で失敗。
 - XcodeのApple ID再ログインが必要。
 - App ID `com.momi0216yama.nomidaitracker` の作成が必要。
 - Widget App ID `com.momi0216yama.nomidaitracker.widget` の作成が必要。
 - App Group `group.com.momi0216yama.nomidaitracker` の作成と紐づけが必要。
 - Provisioning Profileの生成が必要。
+- 再確認コマンド: `bash scripts/archive-testflight.sh`
 
 ### App Store Connect
 
@@ -74,6 +76,6 @@ xcodebuild test \
 2. このリポジトリをpushする。
 3. GitHub Pagesで `docs` を公開する。
 4. Apple DeveloperでApp ID、Widget App ID、App Groupを作成する。
-5. XcodeでArchiveを作成する。
+5. `bash scripts/archive-testflight.sh` でArchiveを作成する。
 6. App Store ConnectでアプリとIAP商品を作成する。
 7. TestFlightへアップロードする。

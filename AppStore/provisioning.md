@@ -13,9 +13,15 @@ xcodebuild archive \
   -allowProvisioningUpdates
 ```
 
+同じ確認は以下でも実行できます。
+
+```sh
+bash scripts/archive-testflight.sh
+```
+
 ## 結果
 
-Archiveは失敗しました。アプリ本体のコンパイルではなく、Apple Developerアカウント認証とProvisioning Profile不足が原因です。
+2026年7月3日に再実行し、Archiveは引き続き失敗しました。アプリ本体のコンパイルではなく、Apple Developerアカウント認証とProvisioning Profile不足が原因です。
 
 主なエラー:
 
@@ -42,4 +48,7 @@ Archiveは失敗しました。アプリ本体のコンパイルではなく、A
 - `xcodebuild test` は成功済み。
 - Team IDは `NomidaiTracker.xcodeproj` に設定済み。
 - App Group entitlementはアプリ本体とWidgetの両方に設定済み。
+- Signing Styleはアプリ本体とWidgetの両方でAutomaticに設定済み。
 - Archiveの残課題はApple Developer側の認証/Provisioning設定。
+
+最新ArchiveログはクラウドMac上の `/tmp/nomidai_archive_latest.log` に出力済み。

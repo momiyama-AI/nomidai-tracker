@@ -46,7 +46,7 @@
 ## Xcode / TestFlight
 
 - [ ] `xcodebuild test` が成功する。
-- [ ] XcodeでArchiveを作成する。
+- [ ] `bash scripts/archive-testflight.sh` またはXcodeでArchiveを作成する。
 - [ ] Archive OrganizerからValidateする。
 - [ ] TestFlightへアップロードする。
 - [ ] TestFlightでインストールできることを確認する。
