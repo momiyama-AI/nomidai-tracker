@@ -36,8 +36,6 @@ struct PaywallView: View {
                         Image(systemName: "checkmark.seal.fill")
                     }
                     .foregroundStyle(.green)
-                } else if storeKitService.isLoading {
-                    ProgressView()
                 } else if usesScreenshotProducts {
                     screenshotProductButton(
                         nameKey: "paywall.screenshot.lifetime.name",
@@ -49,6 +47,8 @@ struct PaywallView: View {
                         descriptionKey: "paywall.screenshot.monthly.description",
                         price: "¥200/月"
                     )
+                } else if storeKitService.isLoading {
+                    ProgressView()
                 } else if storeKitService.products.isEmpty {
                     Text("paywall.message.productsUnavailable")
                         .foregroundStyle(.secondary)
