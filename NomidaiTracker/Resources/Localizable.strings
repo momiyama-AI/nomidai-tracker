@@ -27,6 +27,10 @@
 "calendar.weekday.6" = "土";
 "calendar.day.detail.empty" = "記録はありません";
 
+"entry.edit.title" = "記録編集";
+"entry.edit.drink" = "飲み物";
+"entry.edit.location" = "場所";
+
 "common.close" = "閉じる";
 
 "quickrecord.title" = "クイック記録";

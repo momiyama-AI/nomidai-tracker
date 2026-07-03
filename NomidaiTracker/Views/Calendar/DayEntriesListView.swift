@@ -16,19 +16,13 @@ struct DayEntriesListView: View {
                     .foregroundStyle(.secondary)
             } else {
                 ForEach(entries, id: \.id) { entry in
-                    HStack {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(entry.presetNameSnapshot)
-                                .font(.body.weight(.medium))
-                            Text(entry.occurredAt, format: .dateTime.hour().minute())
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                    NavigationLink {
+                        EntryEditView(entry: entry) {
+                            reload()
+                            onChanged()
                         }
-
-                        Spacer()
-
-                        Text(CurrencyFormatter.yenString(entry.amountYen))
-                            .font(.callout.monospacedDigit())
+                    } label: {
+                        DayEntryRow(entry: entry)
                     }
                     .swipeActions {
                         Button(role: .destructive) {
@@ -73,6 +67,154 @@ struct DayEntriesListView: View {
             onChanged()
         } catch {
             assertionFailure("記録の削除に失敗しました: \(error)")
+        }
+    }
+}
+
+private struct DayEntryRow: View {
+    let entry: DrinkEntry
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(entry.presetNameSnapshot)
+                    .font(.body.weight(.medium))
+                Text(entry.occurredAt, format: .dateTime.hour().minute())
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Text(CurrencyFormatter.yenString(entry.amountYen))
+                .font(.callout.monospacedDigit())
+        }
+    }
+}
+
+private struct EntryEditView: View {
+    let entry: DrinkEntry
+    var onSaved: () -> Void
+
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var amountText: String = ""
+    @State private var quantity: Int = 1
+    @State private var occurredAt: Date = .now
+    @State private var memo: String = ""
+
+    private var isOutside: Bool { entry.location == .outside }
+
+    private var amountYen: Int {
+        QuickRecordInputValidator.parseAmountYen(amountText) ?? 0
+    }
+
+    private var pureAlcoholTenthsGram: Int {
+        AlcoholCalculator.pureAlcoholTenthsGram(
+            volumeML: entry.volumeML * quantity,
+            abvTenthsPercent: entry.abvTenthsPercent
+        )
+    }
+
+    var body: some View {
+        Form {
+            Section {
+                LabeledContent {
+                    Text(entry.presetNameSnapshot)
+                } label: {
+                    Text("entry.edit.drink")
+                }
+
+                LabeledContent {
+                    Text(LocalizedStringKey(isOutside ? "quickrecord.location.outside" : "quickrecord.location.home"))
+                } label: {
+                    Text("entry.edit.location")
+                }
+            }
+
+            Section {
+                TextField("quickrecord.field.amount", text: $amountText)
+                    .keyboardType(.numberPad)
+            } header: {
+                Text("quickrecord.field.amount")
+            }
+
+            if !isOutside {
+                Section {
+                    Stepper(value: $quantity, in: 1...99) {
+                        Text("\(quantity)")
+                            .font(.body.monospacedDigit())
+                    }
+                } header: {
+                    Text("quickrecord.field.quantity")
+                }
+            }
+
+            Section {
+                DatePicker(selection: $occurredAt) {
+                    Text("quickrecord.field.date")
+                }
+            }
+
+            Section {
+                TextField("quickrecord.field.memo", text: $memo, axis: .vertical)
+                    .lineLimit(1...3)
+            } header: {
+                Text("quickrecord.field.memo")
+            }
+
+            Section {
+                LabeledContent {
+                    Text(CurrencyFormatter.yenString(amountYen))
+                        .font(.body.weight(.semibold).monospacedDigit())
+                } label: {
+                    Text("quickrecord.field.total")
+                }
+
+                LabeledContent {
+                    Text(AlcoholCalculator.formattedTenthsGram(pureAlcoholTenthsGram))
+                        .foregroundStyle(.secondary)
+                } label: {
+                    Text("quickrecord.field.pureAlcohol")
+                }
+            }
+        }
+        .navigationTitle(Text("entry.edit.title"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button {
+                    save()
+                } label: {
+                    Text("common.save")
+                }
+            }
+        }
+        .onAppear(perform: loadEntry)
+    }
+
+    private func loadEntry() {
+        amountText = String(entry.amountYen)
+        quantity = max(1, entry.quantity)
+        occurredAt = entry.occurredAt
+        memo = entry.memo
+    }
+
+    private func save() {
+        do {
+            try DrinkEntryRepository(context: modelContext).update(
+                entry,
+                occurredAt: occurredAt,
+                quantity: quantity,
+                amountYen: QuickRecordInputValidator.clampedAmountYen(amountYen),
+                memo: memo
+            )
+            try WidgetSnapshotRefresher(context: modelContext).refresh()
+            onSaved()
+            dismiss()
+        } catch {
+            assertionFailure("記録の更新に失敗しました: \(error)")
         }
     }
 }

@@ -95,6 +95,46 @@ final class QuickRecordFlowTests: XCTestCase {
         XCTAssertEqual(try SummaryRepository(context: context).monthlySummary(containing: now).totalAmountYen, 0)
         XCTAssertEqual(try WidgetSnapshotBuilder(context: context).build(now: now).totalAmountYen, 0)
     }
+
+    func testUpdateEntryRefreshesSummaryInputs() throws {
+        let container = try makeContainer()
+        let context = container.mainContext
+        let presetRepository = DrinkPresetRepository(context: context)
+        try presetRepository.seedDefaultPresetsIfNeeded()
+        let preset = try XCTUnwrap(presetRepository.fetchActivePresets().first { $0.name == "缶ビール350" })
+        let now = Date()
+
+        let entryRepository = DrinkEntryRepository(context: context)
+        let entry = try entryRepository.createEntry(from: preset, quantity: 1, amountYen: 220, occurredAt: now)
+        try entryRepository.update(entry, quantity: 2, amountYen: 500)
+
+        let summary = try SummaryRepository(context: context).monthlySummary(containing: now)
+        let widgetSnapshot = try WidgetSnapshotBuilder(context: context).build(now: now)
+
+        XCTAssertEqual(entry.quantity, 2)
+        XCTAssertEqual(entry.amountYen, 500)
+        XCTAssertEqual(entry.pureAlcoholTenthsGram, 280)
+        XCTAssertEqual(summary.totalAmountYen, 500)
+        XCTAssertEqual(widgetSnapshot.totalAmountYen, 500)
+    }
+
+    func testUpdateEntryDateMovesBetweenDayFetches() throws {
+        let container = try makeContainer()
+        let context = container.mainContext
+        let presetRepository = DrinkPresetRepository(context: context)
+        try presetRepository.seedDefaultPresetsIfNeeded()
+        let preset = try XCTUnwrap(presetRepository.fetchActivePresets().first { $0.name == "缶ビール350" })
+        let calendar = Calendar.current
+        let originalDate = try XCTUnwrap(calendar.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 20)))
+        let movedDate = try XCTUnwrap(calendar.date(byAdding: .day, value: 1, to: originalDate))
+
+        let entryRepository = DrinkEntryRepository(context: context)
+        let entry = try entryRepository.createEntry(from: preset, quantity: 1, amountYen: 220, occurredAt: originalDate)
+        try entryRepository.update(entry, occurredAt: movedDate)
+
+        XCTAssertTrue(try entryRepository.fetchEntries(on: originalDate).isEmpty)
+        XCTAssertEqual(try entryRepository.fetchEntries(on: movedDate).map(\.id), [entry.id])
+    }
 }
 
 final class QuickRecordInputValidatorTests: XCTestCase {
