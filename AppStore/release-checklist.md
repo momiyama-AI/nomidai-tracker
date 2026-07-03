@@ -45,6 +45,7 @@
 
 ## Xcode / TestFlight
 
+- [ ] `bash scripts/verify-release-readiness.sh` が成功する。
 - [ ] `xcodebuild test` が成功する。
 - [ ] `bash scripts/archive-testflight.sh` またはXcodeでArchiveを作成する。
 - [ ] Archive OrganizerからValidateする。
