@@ -1,4 +1,7 @@
 *.storekit text eol=lf
 *.md text eol=lf
+*.plist text eol=lf
+*.pbxproj text eol=lf
+*.swift text eol=lf
 .github/workflows/*.yml text eol=lf
 .github/workflows/*.yaml text eol=lf

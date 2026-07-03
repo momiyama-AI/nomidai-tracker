@@ -98,6 +98,14 @@ GitHub Pagesで公開する場合:
 
 詳細な回答案は `AppStore/privacy-answers.md` を参照。
 
+## 輸出コンプライアンス
+
+- 独自の非免除暗号化: なし
+- サーバー、外部API、アカウント登録: なし
+- `ITSAppUsesNonExemptEncryption`: false
+
+詳細な回答案は `AppStore/export-compliance.md` を参照。
+
 ## 年齢制限
 
 - 推奨: 17+

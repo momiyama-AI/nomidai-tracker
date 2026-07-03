@@ -17,6 +17,7 @@
 - App Store提出用スクリーンショット
 - 利用規約、プライバシーポリシー、サポートページ原稿
 - PrivacyInfo.xcprivacy
+- 輸出コンプライアンス用 `ITSAppUsesNonExemptEncryption = false` 設定
 - App Store Connect入力メモ
 - GitHub Pages公開手順
 - GitHub Actions CI設定

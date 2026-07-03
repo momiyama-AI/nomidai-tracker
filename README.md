@@ -37,6 +37,7 @@ GitHubにpush後は `.github/workflows/ios-ci.yml` により、pushとpull reque
 
 - `AppStore/submission.md`: App Store Connect入力メモ
 - `AppStore/privacy-answers.md`: プライバシー回答案
+- `AppStore/export-compliance.md`: 輸出コンプライアンス回答案
 - `AppStore/age-rating.md`: 年齢制限回答案
 - `AppStore/iap-products.md`: アプリ内課金商品設定案
 - `AppStore/release-checklist.md`: リリース前チェックリスト
