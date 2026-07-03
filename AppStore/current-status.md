@@ -52,19 +52,18 @@ xcodebuild test \
 
 ### GitHub
 
-- `momiyama-AI/nomidai-tracker` リポジトリは確認時点で未作成または未アクセス。
-- GitHub連携検索でも `momiyama-AI` 配下に `nomidai` 関連リポジトリは見つからなかった。
-- リポジトリ作成後、`bash scripts/push-github.sh` でローカルのremoteを追加してpushする。
+- `momiyama-AI/nomidai-tracker` リポジトリは作成済み。
+- ローカルリポジトリからGitHubへpush済み。
+- GitHub Actionsの `iOS CI` は成功確認済み。
 - GitHub Pagesの公開元を `docs` に設定する。
 - `bash scripts/verify-pages.sh` で法務ページURLが開けることを確認する。
 
 ### Apple Developer
 
-- 2026年7月3日にArchiveを再実行し、Apple IDログイン拒否とProvisioning Profile未作成で失敗。
+- 2026年7月3日にApple DeveloperでApp ID、Widget App ID、App Groupを作成済み。
+- App IDとWidget App IDの両方にApp Group `group.com.momi0216yama.nomidaitracker` を紐づけ済み。
+- 2026年7月3日にArchiveを再実行し、Cloud MacのXcode Apple IDログイン拒否とProvisioning Profile未作成で失敗。
 - XcodeのApple ID再ログインが必要。
-- App ID `com.momi0216yama.nomidaitracker` の作成が必要。
-- Widget App ID `com.momi0216yama.nomidaitracker.widget` の作成が必要。
-- App Group `group.com.momi0216yama.nomidaitracker` の作成と紐づけが必要。
 - Provisioning Profileの生成が必要。
 - 再確認コマンド: `bash scripts/archive-testflight.sh`
 - 詳細手順: `AppStore/apple-developer-setup.md`
@@ -85,7 +84,7 @@ xcodebuild test \
 1. GitHubで `momiyama-AI/nomidai-tracker` を作成する。
 2. `bash scripts/push-github.sh` でこのリポジトリをpushする。
 3. GitHub Pagesで `docs` を公開する。
-4. `AppStore/apple-developer-setup.md` に沿ってApple DeveloperでApp ID、Widget App ID、App Groupを作成する。
+4. Cloud MacのXcodeでApple IDに再ログインし、Provisioning Profileを自動生成する。
 5. `bash scripts/archive-testflight.sh` でArchiveを作成する。
 6. App Store ConnectでアプリとIAP商品を作成する。
 7. TestFlightへアップロードする。

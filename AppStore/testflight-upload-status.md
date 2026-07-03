@@ -5,7 +5,8 @@
 ## 現在の状態
 
 TestFlightアップロード前のArchive作成で停止しています。
-アプリ本体のビルド/テスト/提出物チェックは通っていますが、Apple Developer/Xcode側の署名設定が未完了です。
+アプリ本体のビルド/テスト/提出物チェックは通っており、Apple Developer側のApp ID/App Group作成と紐づけも完了しています。
+残りはCloud MacのXcodeに保存されているApple IDログインの再認証と、Provisioning Profileの自動生成です。
 
 ## 実行済み
 
@@ -28,6 +29,7 @@ OK: Project uses Automatic signing
 OK: App entitlement has App Group
 OK: Widget entitlement has App Group
 NG: Provisioning profile directory is missing: /Users/user298254/Library/MobileDevice/Provisioning Profiles
+DIAGNOSE_EXIT_STATUS:1
 ```
 
 `archive-testflight.sh`:
@@ -52,15 +54,19 @@ Cloud MacのXcodeで以下を行います。
 1. `Xcode > Settings > Accounts` を開く。
 2. Apple ID `m0mi0216yama@gmail.com` を一度削除または再ログインする。
 3. Team `K4RPQR296Y` が表示されることを確認する。
-4. Apple Developerで以下を作成/確認する。
-   - App ID: `com.momi0216yama.nomidaitracker`
-   - Widget App ID: `com.momi0216yama.nomidaitracker.widget`
-   - App Group: `group.com.momi0216yama.nomidaitracker`
-5. App IDとWidget App IDの両方にApp Groupを紐づける。
-6. XcodeでAutomatic signingによりProvisioning Profileが生成されることを確認する。
-7. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
-8. `bash scripts/archive-testflight.sh` を再実行する。
-9. Archive成功後、OrganizerまたはXcode uploadコマンドでTestFlightへアップロードする。
+4. XcodeでAutomatic signingによりProvisioning Profileが生成されることを確認する。
+5. `bash scripts/diagnose-signing.sh` が `Signing diagnostics passed.` になることを確認する。
+6. `bash scripts/archive-testflight.sh` を再実行する。
+7. Archive成功後、OrganizerまたはXcode uploadコマンドでTestFlightへアップロードする。
+
+## Apple Developer確認済み
+
+2026年7月3日にApple Developerで以下を確認済みです。
+
+- App ID: `com.momi0216yama.nomidaitracker`
+- Widget App ID: `com.momi0216yama.nomidaitracker.widget`
+- App Group: `group.com.momi0216yama.nomidaitracker`
+- App IDとWidget App IDの両方にApp Group `group.com.momi0216yama.nomidaitracker` を紐づけ済み。
 
 ## ログ
 

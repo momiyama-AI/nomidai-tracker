@@ -7,10 +7,10 @@
 - [ ] `AppStore/apple-developer-setup.md` の手順を開く。
 - [ ] Xcode > Settings > Accounts でApple IDに再ログインする。
 - [ ] Team `K4RPQR296Y` が表示されることを確認する。
-- [ ] App ID `com.momi0216yama.nomidaitracker` を作成する。
-- [ ] Widget App ID `com.momi0216yama.nomidaitracker.widget` を作成する。
-- [ ] App Group `group.com.momi0216yama.nomidaitracker` を作成する。
-- [ ] App IDとWidget App IDの両方にApp Groupを紐づける。
+- [x] App ID `com.momi0216yama.nomidaitracker` を作成する。
+- [x] Widget App ID `com.momi0216yama.nomidaitracker.widget` を作成する。
+- [x] App Group `group.com.momi0216yama.nomidaitracker` を作成する。
+- [x] App IDとWidget App IDの両方にApp Groupを紐づける。
 - [ ] Provisioning Profileが自動作成されることを確認する。
 
 ## App Store Connect
@@ -33,9 +33,9 @@
 
 ## GitHub Pages / 法務ページ
 
-- [ ] GitHubリポジトリ `momiyama-AI/nomidai-tracker` を作成する。
-- [ ] `bash scripts/push-github.sh` でremote追加とpushを行う。
-- [ ] GitHub Actionsの `iOS CI` が成功する。
+- [x] GitHubリポジトリ `momiyama-AI/nomidai-tracker` を作成する。
+- [x] `bash scripts/push-github.sh` でremote追加とpushを行う。
+- [x] GitHub Actionsの `iOS CI` が成功する。
 - [ ] リポジトリ名またはPages URLをアプリ内URLと合わせる。
 - [ ] Pages公開元を `docs` に設定する。
 - [ ] `bash scripts/verify-pages.sh` でPages URLの疎通を確認する。
