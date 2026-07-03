@@ -1,10 +1,2 @@
-*.swift text eol=lf
-*.pbxproj text eol=lf
-*.xcscheme text eol=lf
-*.strings text eol=lf
-*.xcprivacy text eol=lf
+*.storekit text eol=lf
 *.md text eol=lf
-*.json text eol=lf
-*.plist text eol=lf
-.gitattributes text eol=lf
-.gitignore text eol=lf
