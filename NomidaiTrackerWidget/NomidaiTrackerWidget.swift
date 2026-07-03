@@ -33,8 +33,8 @@ struct NomidaiTrackerWidget: Widget {
         StaticConfiguration(kind: kind, provider: NomidaiWidgetProvider()) { entry in
             NomidaiWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName(LocalizedStringResource("widget.configuration.name"))
-        .description(LocalizedStringResource("widget.configuration.description"))
+        .configurationDisplayName("飲み代トラッカー")
+        .description("今月の飲み代を表示します。")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
