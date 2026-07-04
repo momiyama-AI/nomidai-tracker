@@ -215,9 +215,23 @@ struct CharacterView: View {
     @State private var idleNudge = false
     @State private var roomMotion = false
 
+    private let referenceSceneImageName = "NomidanukiLifeScene"
     private var appearance: CharacterAppearance { level.appearance }
 
     var body: some View {
+        Group {
+            if UIImage(named: referenceSceneImageName) != nil {
+                ReferenceLifeSceneView(imageName: referenceSceneImageName, level: level, line: line)
+            } else {
+                animatedPlaceholderStage
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(Text(NSLocalizedString(level.localizationKey, comment: "")))
+        .accessibilityValue(Text(line))
+    }
+
+    private var animatedPlaceholderStage: some View {
         VStack(spacing: 10) {
             ZStack(alignment: .topTrailing) {
                 StorybookLifeBackdrop(
@@ -265,9 +279,6 @@ struct CharacterView: View {
                 .transition(.opacity.combined(with: .move(edge: .top)))
                 .animation(.easeInOut(duration: 0.25), value: line)
         }
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel(Text(NSLocalizedString(level.localizationKey, comment: "")))
-        .accessibilityValue(Text(line))
     }
 
     @ViewBuilder
@@ -345,6 +356,34 @@ struct CharacterView: View {
                 }
             }
         }
+    }
+}
+
+private struct ReferenceLifeSceneView: View {
+    let imageName: String
+    let level: WealthLevel
+    let line: String
+
+    @State private var isPressed = false
+
+    var body: some View {
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .aspectRatio(797.0 / 690.0, contentMode: .fit)
+            .frame(maxWidth: .infinity)
+            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+            .scaleEffect(isPressed ? 0.985 : 1)
+            .animation(.spring(response: 0.28, dampingFraction: 0.62), value: isPressed)
+            .onTapGesture {
+                isPressed = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+                    isPressed = false
+                }
+            }
+            .accessibilityLabel(Text(NSLocalizedString(level.localizationKey, comment: "")))
+            .accessibilityValue(Text(line))
     }
 }
 

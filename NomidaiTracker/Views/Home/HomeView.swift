@@ -55,27 +55,20 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
+                    header
                     totalCard
                     characterStage
-                    comparisonRow
                     statsGrid
                     actionButtons
                 }
                 .padding(.horizontal, 16)
-                .padding(.vertical, 18)
+                .padding(.top, 52)
+                .padding(.bottom, 30)
             }
-            .navigationTitle(Text("app.title"))
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink {
-                        SettingsView()
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
-                }
-            }
+            .background(Color.black.ignoresSafeArea())
+            .toolbar(.hidden, for: .navigationBar)
             .onAppear(perform: reload)
             .onChange(of: isPresentingQuickRecord) { _, isPresenting in
                 if !isPresenting {
@@ -86,24 +79,58 @@ struct HomeView: View {
                 QuickRecordPresetListView(isPresented: $isPresentingQuickRecord)
             }
         }
+        .preferredColorScheme(.dark)
+    }
+
+    private var header: some View {
+        HStack(alignment: .top, spacing: 16) {
+            Text("app.title")
+                .font(.system(size: 34, weight: .black, design: .rounded))
+                .foregroundStyle(.white)
+                .lineLimit(1)
+                .minimumScaleFactor(0.82)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            NavigationLink {
+                SettingsView()
+            } label: {
+                Image(systemName: "gearshape")
+                    .font(.system(size: 30, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .frame(width: 72, height: 72)
+                    .background {
+                        Circle()
+                            .fill(Color.white.opacity(0.10))
+                            .overlay(Circle().stroke(.white.opacity(0.10), lineWidth: 1))
+                    }
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text("settings.title"))
+        }
+        .padding(.top, 8)
     }
 
     private var totalCard: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 12) {
             Text("home.section.total")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundStyle(Color.white.opacity(0.46))
             Text(CurrencyFormatter.yenString(totalAmountYen))
-                .font(.system(size: 48, weight: .heavy, design: .rounded))
+                .font(.system(size: 64, weight: .heavy, design: .rounded))
                 .monospacedDigit()
+                .foregroundStyle(.white)
+                .lineLimit(1)
+                .minimumScaleFactor(0.72)
         }
         .frame(maxWidth: .infinity)
+        .padding(.top, 18)
+        .padding(.bottom, 2)
     }
 
     private var characterStage: some View {
         CharacterView(level: wealthLevel, line: characterLine)
             .layoutPriority(1)
-            .padding(.top, -2)
+            .padding(.top, -4)
     }
 
     private var comparisonRow: some View {
@@ -135,13 +162,50 @@ struct HomeView: View {
 
     private var statsGrid: some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-            StatTileView(title: "home.breakdown.home", value: CurrencyFormatter.yenString(homeAmountYen))
-            StatTileView(title: "home.breakdown.outside", value: CurrencyFormatter.yenString(outsideAmountYen))
-            StatTileView(title: "home.pureAlcohol.label", value: AlcoholCalculator.formattedTenthsGram(pureAlcoholTenthsGram))
-            StatTileView(title: "home.dryDays.label", value: dryDaysValueText)
-            StatTileView(title: "home.budget.remaining.label", value: budgetRemainingText)
-            StatTileView(title: "home.budget.pace.label", value: budgetPaceText)
+            StatTileView(
+                title: "home.breakdown.home",
+                value: CurrencyFormatter.yenString(homeAmountYen),
+                valueColor: .white,
+                iconSystemName: "house.fill",
+                iconColor: Color(red: 0.48, green: 0.88, blue: 0.49)
+            )
+            StatTileView(
+                title: "home.breakdown.outside",
+                value: CurrencyFormatter.yenString(outsideAmountYen),
+                valueColor: .white,
+                iconSystemName: "wineglass.fill",
+                iconColor: Color(red: 0.75, green: 0.46, blue: 0.95)
+            )
+            StatTileView(
+                title: "home.pureAlcohol.label",
+                value: AlcoholCalculator.formattedTenthsGram(pureAlcoholTenthsGram),
+                valueColor: .white,
+                iconSystemName: "waterbottle.fill",
+                iconColor: Color(red: 0.50, green: 0.78, blue: 1.00)
+            )
+            StatTileView(
+                title: "home.dryDays.label",
+                value: dryDaysValueText,
+                valueColor: .white,
+                iconSystemName: "calendar",
+                iconColor: Color(red: 1.00, green: 0.58, blue: 0.30)
+            )
+            StatTileView(
+                title: "home.budget.remaining.label",
+                value: budgetRemainingText,
+                valueColor: .white,
+                iconSystemName: "bag.fill",
+                iconColor: Color(red: 0.97, green: 0.74, blue: 0.26)
+            )
+            StatTileView(
+                title: "home.budget.pace.label",
+                value: budgetPaceText,
+                valueColor: .white,
+                iconSystemName: "piggybank.fill",
+                iconColor: Color(red: 1.00, green: 0.42, blue: 0.58)
+            )
         }
+        .padding(.top, 2)
     }
 
     private var dryDaysValueText: String {
@@ -149,63 +213,34 @@ struct HomeView: View {
     }
 
     private var actionButtons: some View {
-        VStack(spacing: 12) {
-            Button {
-                isPresentingQuickRecord = true
-            } label: {
-                Label {
-                    Text("home.button.record")
-                } icon: {
-                    Image(systemName: "plus.circle.fill")
-                }
-                .font(.title3.weight(.semibold))
-                .frame(maxWidth: .infinity)
+        Button {
+            isPresentingQuickRecord = true
+        } label: {
+            HStack(spacing: 14) {
+                Image(systemName: "plus.circle.fill")
+                    .font(.system(size: 30, weight: .bold))
+                Text("home.button.record")
+                    .font(.system(size: 26, weight: .bold, design: .rounded))
             }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-
-            NavigationLink {
-                CalendarMonthView()
-            } label: {
-                Label {
-                    Text("home.calendar.button")
-                } icon: {
-                    Image(systemName: "calendar")
-                }
-                .font(.body.weight(.medium))
-                .frame(maxWidth: .infinity)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .frame(height: 78)
+            .background {
+                Capsule()
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 0.17, green: 0.76, blue: 0.58),
+                                Color(red: 0.24, green: 0.68, blue: 0.49)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
             }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
-
-            NavigationLink {
-                SpendingChartView()
-            } label: {
-                Label {
-                    Text("home.reports.chart.button")
-                } icon: {
-                    Image(systemName: "chart.line.uptrend.xyaxis")
-                }
-                .font(.body.weight(.medium))
-                .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
-
-            NavigationLink {
-                CSVExportView()
-            } label: {
-                Label {
-                    Text("home.reports.csv.button")
-                } icon: {
-                    Image(systemName: "square.and.arrow.up")
-                }
-                .font(.body.weight(.medium))
-                .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
-            .controlSize(.large)
         }
+        .buttonStyle(.plain)
+        .padding(.top, 12)
     }
 
     private func reload() {
