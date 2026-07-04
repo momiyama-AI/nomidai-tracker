@@ -1017,7 +1017,7 @@ private struct RoomClutterSymbols: View {
         HStack(alignment: .bottom, spacing: 7) {
             ForEach(0..<appearance.clutterSymbols.count, id: \.self) { index in
                 Image(systemName: appearance.clutterSymbols[index])
-                    .font(.system(size: appearance.clutterLevel >= 3 ? 18 + index * 2 : 15 + index, weight: .bold))
+                    .font(.system(size: CGFloat(appearance.clutterLevel >= 3 ? 18 + index * 2 : 15 + index), weight: .bold))
                     .symbolRenderingMode(.hierarchical)
                     .foregroundStyle(index.isMultiple(of: 2) ? appearance.propColor : Color.white.opacity(0.72))
                     .rotationEffect(.degrees(isAmbientAnimating ? Double(index * 7 - 7) : Double(index * 5 - 11)))
@@ -1438,7 +1438,7 @@ private struct SparkleCluster: View {
         ZStack {
             ForEach(0..<5, id: \.self) { index in
                 Image(systemName: "sparkle")
-                    .font(.system(size: 10 + index, weight: .bold))
+                    .font(.system(size: CGFloat(10 + index), weight: .bold))
                     .foregroundStyle(color.opacity(0.7))
                     .offset(x: CGFloat(index * 18 - 32), y: CGFloat((index % 3) * 15 - 18))
             }
