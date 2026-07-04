@@ -364,26 +364,372 @@ private struct ReferenceLifeSceneView: View {
     let level: WealthLevel
     let line: String
 
+    @State private var isBreathing = false
+    @State private var idleSway = false
     @State private var isPressed = false
+    @State private var ambientPulse = false
 
     var body: some View {
-        Image(imageName)
-            .resizable()
-            .scaledToFill()
-            .aspectRatio(797.0 / 690.0, contentMode: .fit)
-            .frame(maxWidth: .infinity)
-            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-            .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
-            .scaleEffect(isPressed ? 0.985 : 1)
-            .animation(.spring(response: 0.28, dampingFraction: 0.62), value: isPressed)
-            .onTapGesture {
-                isPressed = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
-                    isPressed = false
+        GeometryReader { proxy in
+            ZStack {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: proxy.size.width, height: proxy.size.height)
+                    .scaleEffect(isPressed ? 0.992 : (isBreathing ? 1.010 : 1.0), anchor: .center)
+                    .offset(x: idleSway ? 1.6 : -1.0, y: isBreathing ? -1.8 : 1.2)
+                    .clipped()
+
+                ReferenceLifestyleOverlay(
+                    level: level,
+                    line: line,
+                    isBreathing: isBreathing,
+                    idleSway: idleSway,
+                    isPressed: isPressed,
+                    ambientPulse: ambientPulse
+                )
+            }
+            .frame(width: proxy.size.width, height: proxy.size.height)
+        }
+        .aspectRatio(797.0 / 690.0, contentMode: .fit)
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+        .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
+                .stroke(level.referenceAccentColor.opacity(0.26), lineWidth: 1.4)
+        }
+        .shadow(color: level.referenceAccentColor.opacity(level.referenceShadowOpacity), radius: 20, y: 10)
+        .animation(.spring(response: 0.28, dampingFraction: 0.62), value: isPressed)
+        .animation(.easeInOut(duration: 0.45), value: level)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true)) {
+                isBreathing = true
+            }
+            withAnimation(.easeInOut(duration: 3.4).repeatForever(autoreverses: true)) {
+                idleSway = true
+            }
+            withAnimation(.easeInOut(duration: 2.2).repeatForever(autoreverses: true)) {
+                ambientPulse = true
+            }
+        }
+        .onTapGesture {
+            isPressed = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.26) {
+                isPressed = false
+            }
+        }
+        .accessibilityLabel(Text(NSLocalizedString(level.localizationKey, comment: "")))
+        .accessibilityValue(Text(line))
+    }
+}
+
+private struct ReferenceLifestyleOverlay: View {
+    let level: WealthLevel
+    let line: String
+    let isBreathing: Bool
+    let idleSway: Bool
+    let isPressed: Bool
+    let ambientPulse: Bool
+
+    var body: some View {
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let height = proxy.size.height
+
+            ZStack {
+                level.referenceMoodWash
+
+                ReferenceRichnessLayer(
+                    level: level,
+                    width: width,
+                    height: height,
+                    idleSway: idleSway,
+                    ambientPulse: ambientPulse
+                )
+
+                ReferencePovertyLayer(
+                    level: level,
+                    width: width,
+                    height: height,
+                    idleSway: idleSway,
+                    ambientPulse: ambientPulse
+                )
+
+                ReferenceSteamView(isAnimating: ambientPulse)
+                    .frame(width: width * 0.13, height: height * 0.12)
+                    .position(x: width * 0.63, y: height * 0.57)
+                    .opacity(level.referenceSteamOpacity)
+
+                ReferenceHeadLeafView(isAnimating: idleSway)
+                    .frame(width: width * 0.062, height: height * 0.038)
+                    .rotationEffect(.degrees(idleSway ? 7 : -6))
+                    .scaleEffect(isBreathing ? 1.05 : 0.96)
+                    .position(x: width * 0.565, y: height * 0.455)
+
+                ReferenceSpeechText(text: line, level: level)
+                    .frame(width: width * 0.24)
+                    .position(x: width * 0.56, y: height * 0.355)
+
+                if isPressed {
+                    ReferenceTapReaction(color: level.referenceAccentColor)
+                        .frame(width: width * 0.32, height: height * 0.18)
+                        .position(x: width * 0.62, y: height * 0.46)
+                        .transition(.scale(scale: 0.7).combined(with: .opacity))
                 }
             }
-            .accessibilityLabel(Text(NSLocalizedString(level.localizationKey, comment: "")))
-            .accessibilityValue(Text(line))
+            .drawingGroup()
+        }
+    }
+}
+
+private struct ReferenceRichnessLayer: View {
+    let level: WealthLevel
+    let width: CGFloat
+    let height: CGFloat
+    let idleSway: Bool
+    let ambientPulse: Bool
+
+    private var intensity: Double {
+        switch level {
+        case .grandRich: return 1
+        case .rich: return 0.72
+        case .comfortable: return 0.30
+        default: return 0
+        }
+    }
+
+    var body: some View {
+        if intensity > 0 {
+            ZStack {
+                ForEach(0..<6, id: \.self) { index in
+                    Image(systemName: index.isMultiple(of: 2) ? "yensign.circle.fill" : "sparkle")
+                        .font(.system(size: CGFloat(12 + index * 2), weight: .bold))
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundStyle(Color(red: 1.0, green: 0.78, blue: 0.22))
+                        .opacity((0.34 + Double(index % 3) * 0.10) * intensity)
+                        .position(
+                            x: width * CGFloat([0.14, 0.28, 0.78, 0.88, 0.20, 0.72][index]),
+                            y: height * CGFloat([0.16, 0.30, 0.17, 0.37, 0.68, 0.61][index])
+                        )
+                        .offset(y: ambientPulse ? CGFloat(index % 2 == 0 ? -7 : 6) : CGFloat(index % 2 == 0 ? 5 : -6))
+                }
+
+                Image(systemName: level == .grandRich ? "crown.fill" : "sparkles")
+                    .font(.system(size: width * (level == .grandRich ? 0.075 : 0.060), weight: .bold))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(Color(red: 1.0, green: 0.80, blue: 0.22))
+                    .shadow(color: .black.opacity(0.22), radius: 4, y: 2)
+                    .position(x: width * 0.58, y: height * 0.405)
+                    .offset(y: idleSway ? -5 : 1)
+                    .opacity(0.92 * intensity)
+            }
+        }
+    }
+}
+
+private struct ReferencePovertyLayer: View {
+    let level: WealthLevel
+    let width: CGFloat
+    let height: CGFloat
+    let idleSway: Bool
+    let ambientPulse: Bool
+
+    private var intensity: Double {
+        switch level {
+        case .broke: return 0.60
+        case .extremePoor: return 0.95
+        default: return 0
+        }
+    }
+
+    var body: some View {
+        if intensity > 0 {
+            ZStack {
+                Color.black.opacity(0.15 * intensity)
+
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(Color(red: 0.55, green: 0.36, blue: 0.20).opacity(0.92))
+                    .overlay {
+                        VStack(spacing: 5) {
+                            Rectangle().fill(Color.black.opacity(0.18)).frame(height: 1)
+                            Rectangle().fill(Color.black.opacity(0.18)).frame(height: 1)
+                        }
+                        .padding(.horizontal, 8)
+                    }
+                    .overlay(RoundedRectangle(cornerRadius: 8, style: .continuous).stroke(Color.black.opacity(0.24), lineWidth: 1))
+                    .frame(width: width * 0.14, height: height * 0.08)
+                    .rotationEffect(.degrees(-5))
+                    .position(x: width * 0.86, y: height * 0.78)
+                    .opacity(0.76 * intensity)
+
+                Image(systemName: "lightbulb.fill")
+                    .font(.system(size: width * 0.060, weight: .bold))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(Color(red: 1.0, green: 0.70, blue: 0.24))
+                    .shadow(color: Color.orange.opacity(ambientPulse ? 0.62 : 0.18), radius: ambientPulse ? 12 : 4)
+                    .position(x: width * 0.79, y: height * 0.19)
+                    .opacity((level == .extremePoor ? 0.92 : 0.62) * intensity)
+
+                MoyashiBowl(woodColor: Color(red: 0.22, green: 0.13, blue: 0.08))
+                    .frame(width: width * 0.12, height: height * 0.075)
+                    .position(x: width * 0.63, y: height * 0.66)
+                    .offset(y: idleSway ? 1.5 : -1.5)
+                    .opacity(0.80 * intensity)
+
+                ForEach(0..<3, id: \.self) { index in
+                    Capsule()
+                        .fill(Color.white.opacity(0.56))
+                        .frame(width: width * 0.010, height: height * 0.038)
+                        .rotationEffect(.degrees(Double(index * 18 - 18)))
+                        .position(x: width * CGFloat(0.58 + Double(index) * 0.022), y: height * 0.50)
+                        .offset(y: ambientPulse ? 5 : -2)
+                        .opacity(0.55 * intensity)
+                }
+            }
+        }
+    }
+}
+
+private struct ReferenceSpeechText: View {
+    let text: String
+    let level: WealthLevel
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 10.5, weight: .bold, design: .rounded))
+            .foregroundStyle(Color(red: 0.26, green: 0.15, blue: 0.08))
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .minimumScaleFactor(0.62)
+            .padding(.horizontal, 4)
+            .opacity(level == .normal ? 0.78 : 0.95)
+    }
+}
+
+private struct ReferenceSteamView: View {
+    let isAnimating: Bool
+
+    var body: some View {
+        ZStack {
+            ForEach(0..<3, id: \.self) { index in
+                Capsule()
+                    .stroke(Color.white.opacity(0.50), lineWidth: 1.6)
+                    .frame(width: CGFloat(10 + index * 3), height: CGFloat(28 + index * 5))
+                    .rotationEffect(.degrees(Double(index * 13 - 13)))
+                    .offset(x: CGFloat(index * 9 - 9), y: isAnimating ? -13 : -2)
+                    .opacity(isAnimating ? 0.12 : 0.42)
+            }
+        }
+    }
+}
+
+private struct ReferenceHeadLeafView: View {
+    let isAnimating: Bool
+
+    var body: some View {
+        LeafShape()
+            .fill(
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.52, green: 0.78, blue: 0.28),
+                        Color(red: 0.22, green: 0.52, blue: 0.19)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+            )
+            .overlay(LeafShape().stroke(Color(red: 0.18, green: 0.31, blue: 0.10), lineWidth: 1))
+            .shadow(color: .black.opacity(0.20), radius: 2, y: 1)
+            .offset(y: isAnimating ? -2 : 1)
+    }
+}
+
+private struct ReferenceTapReaction: View {
+    let color: Color
+
+    var body: some View {
+        ZStack {
+            ForEach(0..<7, id: \.self) { index in
+                Image(systemName: index.isMultiple(of: 2) ? "sparkle" : "heart.fill")
+                    .font(.system(size: CGFloat(12 + index), weight: .bold))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(index.isMultiple(of: 2) ? Color(red: 1.0, green: 0.78, blue: 0.22) : color)
+                    .offset(
+                        x: CGFloat(index * 17 - 52),
+                        y: CGFloat((index % 3) * 18 - 28)
+                    )
+            }
+        }
+    }
+}
+
+private extension WealthLevel {
+    var referenceAccentColor: Color {
+        switch self {
+        case .grandRich:
+            return Color(red: 1.0, green: 0.78, blue: 0.22)
+        case .rich:
+            return Color(red: 0.82, green: 0.52, blue: 0.92)
+        case .comfortable:
+            return Color(red: 0.38, green: 0.76, blue: 0.50)
+        case .normal:
+            return Color(red: 0.90, green: 0.56, blue: 0.30)
+        case .broke:
+            return Color(red: 0.78, green: 0.56, blue: 0.28)
+        case .extremePoor:
+            return Color(red: 0.52, green: 0.34, blue: 0.23)
+        }
+    }
+
+    var referenceShadowOpacity: Double {
+        switch self {
+        case .grandRich, .rich:
+            return 0.22
+        case .comfortable:
+            return 0.14
+        case .normal:
+            return 0.10
+        case .broke, .extremePoor:
+            return 0.05
+        }
+    }
+
+    @ViewBuilder
+    var referenceMoodWash: some View {
+        switch self {
+        case .grandRich:
+            LinearGradient(
+                colors: [Color.yellow.opacity(0.12), Color.clear, Color.orange.opacity(0.08)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case .rich:
+            LinearGradient(
+                colors: [Color.purple.opacity(0.08), Color.clear, Color.yellow.opacity(0.05)],
+                startPoint: .topTrailing,
+                endPoint: .bottomLeading
+            )
+        case .comfortable:
+            Color.green.opacity(0.035)
+        case .normal:
+            Color.clear
+        case .broke:
+            Color.black.opacity(0.05)
+        case .extremePoor:
+            Color.black.opacity(0.12)
+        }
+    }
+
+    var referenceSteamOpacity: Double {
+        switch self {
+        case .grandRich, .rich, .comfortable, .normal:
+            return 1.0
+        case .broke:
+            return 0.72
+        case .extremePoor:
+            return 0.36
+        }
     }
 }
 
